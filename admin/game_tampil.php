@@ -1,5 +1,6 @@
 <?php
 $active = 'game';
+$page_title = 'Data Game';
 include 'layout/header.php';
 include 'layout/sidebar.php';
 include '../config/koneksi.php';
@@ -7,9 +8,9 @@ include '../config/koneksi.php';
 $data = mysqli_query($koneksi, "SELECT * FROM tb_game ORDER BY id_game DESC");
 ?>
 
-<h3 class="mb-3">Data Game</h3>
-
-<a href="game_input.php" class="btn btn-success mb-3">+ Tambah Game</a>
+<div class="d-flex justify-content-end mb-3">
+    <a href="game_input.php" class="btn btn-success">+ Tambah Game</a>
+</div>
 
 <div class="card shadow-sm">
     <div class="card-body">

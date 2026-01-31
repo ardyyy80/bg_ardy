@@ -1,10 +1,9 @@
 <?php
 $active = 'dashboard';
+$page_title = 'Dashboard';
 include 'layout/header.php';
 include 'layout/sidebar.php';
 ?>
-
-<h2 class="mb-4">Dashboard</h2>
 
 <div class="row">
     <div class="col-md-3">

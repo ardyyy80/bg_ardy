@@ -1,13 +1,12 @@
 <?php
 $active = 'komen';
+$page_title = 'Komentar';
 include 'layout/header.php';
 include 'layout/sidebar.php';
 include '../config/koneksi.php';
 
 $data = mysqli_query($koneksi, "SELECT * FROM tb_komen ORDER BY id_komen DESC");
 ?>
-
-<h3 class="mb-3">Data Komentar</h3>
 
 <div class="card shadow-sm">
     <div class="card-body">

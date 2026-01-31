@@ -1,6 +1,8 @@
 <div class="d-flex">
     <div class="sidebar">
-        <h5 class="text-white text-center py-3 border-bottom">ADMIN</h5>
+        <div class="sidebar-header">
+            <h5 class="text-white">ADMIN</h5>
+        </div>
 
         <a href="dashboard.php" class="<?= ($active == 'dashboard') ? 'active' : '' ?>">Dashboard</a>
 
@@ -13,8 +15,12 @@
         <a href="developer_tampil.php" class="<?= ($active == 'developer') ? 'active' : '' ?>">Developer</a>
 
         <a href="komen_tampil.php" class="<?= ($active == 'komen') ? 'active' : '' ?>">Komentar</a>
-
-        <a href="../logout.php" class="text-danger">Logout</a>
     </div>
 
-    <div class="flex-fill p-4">
+    <div class="flex-fill">
+        <div class="header-top">
+            <h3><?= isset($page_title) ? $page_title : 'Admin Panel' ?></h3>
+            <a href="../logout.php" class="btn btn-danger">Logout</a>
+        </div>
+
+        <div class="content p-4">

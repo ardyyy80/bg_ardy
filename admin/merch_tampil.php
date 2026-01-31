@@ -1,5 +1,6 @@
 <?php
 $active = 'merch';
+$page_title = 'Merchandise';
 include 'layout/header.php';
 include 'layout/sidebar.php';
 include '../config/koneksi.php';
@@ -7,9 +8,9 @@ include '../config/koneksi.php';
 $data = mysqli_query($koneksi, "SELECT * FROM tb_merch ORDER BY id_merch DESC");
 ?>
 
-<h3 class="mb-3">Data Merchandise</h3>
-
-<a href="merch_input.php" class="btn btn-success mb-3">+ Tambah Merchandise</a>
+<div class="d-flex justify-content-end mb-3">
+    <a href="merch_input.php" class="btn btn-success">+ Tambah Merchandise</a>
+</div>
 
 <div class="card shadow-sm">
     <div class="card-body">
