@@ -1,0 +1,46 @@
+<?php
+$active = 'komen';
+include 'layout/header.php';
+include 'layout/sidebar.php';
+include '../config/koneksi.php';
+
+$data = mysqli_query($koneksi, "SELECT * FROM tb_komen ORDER BY id_komen DESC");
+?>
+
+<h3 class="mb-3">Data Komentar</h3>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <table class="table table-bordered table-striped table-hover mb-0">
+            <thead class="table-primary">
+                <!-- Header tabel komentar -->
+                <tr>
+                    <th width="50">No</th>
+                    <th>Nama Penulis</th>
+                    <th>Komentar</th>
+                    <th width="140">Tanggal</th>
+                    <th width="120">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php $no=1; while($k = mysqli_fetch_assoc($data)): ?>
+                <tr>
+                    <td><?= $no++ ?></td>
+                    <td><?= htmlspecialchars($k['nama_penulis']) ?></td>
+                    <td><?= htmlspecialchars($k['detail_komen']) ?></td>
+                    <td><?= $k['tanggal_komen'] ?></td>
+                    <td>
+                        <a href="komen_proses.php?hapus=<?= $k['id_komen'] ?>"
+                           onclick="return confirm('Hapus komentar ini?')"
+                           class="btn btn-danger btn-sm">
+                           Hapus
+                        </a>
+                    </td>
+                </tr>
+            <?php endwhile; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<?php include 'layout/footer.php'; ?>
