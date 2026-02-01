@@ -5,15 +5,30 @@
     <title>Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        :root {
+            --light-bg: #f5f7fa;
+            --light-purple: #e8e4f3;
+            --light-accent: #d4c5f9;
+            --light-hover: #c5b3f0;
+            --accent-purple: #7c5ec9;
+            --dark-text: #2d3748;
+        }
+
         body {
             min-height: 100vh;
-            background: #f4f6f9;   /* iki background utama e */
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8e4f3 100%);
+            color: #2d3748;
+        }
+
+        *, *::before, *::after {
+            color: inherit;
         }
 
         .sidebar {
             width: 240px;
             min-height: 100vh;
-            background: #212529;    /* iki background side bar */
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+            box-shadow: 2px 0 10px rgba(0,0,0,0.08);
         }
 
         .sidebar-header {
@@ -21,28 +36,35 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(124, 94, 201, 0.2);
         }
 
         .sidebar-header h5 {
             margin: 0;
+            color: var(--accent-purple);
+            letter-spacing: 2px;
+            font-weight: 600;
         }
 
         .sidebar a {
-            color: #ddd;        /*ganti warna teks menu e sidebar*/
+            color: var(--dark-text);
             text-decoration: none;
             display: block;
             padding: 12px 16px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
         }
         .sidebar a:hover {          
-            background: #40343b;   /* menu ganti warna lak ape di sentuh mouse */
-            color: #fff;
+            background: var(--light-accent);
+            color: var(--accent-purple);
+            border-left-color: var(--accent-purple);
         }
 
         .sidebar a.active {
-            background: #495057;   /* hover e sek murup terus,lak ndek halaman seng di leboni */
-            color: #fff;
+            background: var(--light-hover);
+            color: var(--accent-purple);
             font-weight: bold;
+            border-left-color: var(--accent-purple);
         }
 
         .header-top {
@@ -51,17 +73,182 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 1.5rem;
-            background: #fff;
-            border-bottom: 1px solid #dee2e6;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(90deg, #ffffff 0%, #f8f9fa 100%);
+            border-bottom: 1px solid var(--accent-purple);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .header-top h3 {
             margin: 0;
+            color: var(--dark-text);
+            font-weight: 600;
         }
 
         .content {
-            background: #f4f6f9;
+            background: transparent;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(124, 94, 201, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .table {
+            color: #2d3748;
+            --bs-table-bg: transparent;
+        }
+
+        .table thead {
+            background: linear-gradient(135deg, #c5b3f0 0%, #d4c5f9 100%) !important;
+            color: #2d3748;
+            box-shadow: 0 2px 8px rgba(124, 94, 201, 0.15);
+            border-bottom: 2px solid var(--accent-purple);
+        }
+
+        .table thead th {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 14px 12px;
+            border-color: rgba(124, 94, 201, 0.2) !important;
+            color: #2d3748 !important;
+        }
+
+        .table tbody td {
+            padding: 12px;
+            vertical-align: middle;
+            border-color: rgba(124, 94, 201, 0.1);
+            color: #2d3748;
+        }
+
+        .table-bordered {
+            border-color: rgba(124, 94, 201, 0.2);
+            border-width: 1px;
+        }
+
+        .table-bordered td,
+        .table-bordered th {
+            border-color: rgba(124, 94, 201, 0.1);
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(197, 179, 240, 0.1);
+        }
+
+        .table-hover tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(197, 179, 240, 0.25);
+            transform: scale(1.002);
+            box-shadow: 0 2px 6px rgba(124, 94, 201, 0.15);
+        }
+
+        .table img {
+            border: 2px solid rgba(124, 94, 201, 0.2);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+            border: 1px solid #c53030;
+            color: #fff !important;
+        }
+
+        .btn-danger:hover {
+            background: linear-gradient(135deg, #c53030 0%, #9b2c2c 100%);
+            border-color: #9b2c2c;
+            color: #fff !important;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            border: 1px solid #38a169;
+            color: #fff !important;
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+            border-color: #2f855a;
+            color: #fff !important;
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+            border: 1px solid #dd6b20;
+            color: #fff !important;
+            font-weight: 600;
+        }
+
+        .btn-warning:hover {
+            background: linear-gradient(135deg, #dd6b20 0%, #c05621 100%);
+            border-color: #c05621;
+            color: #fff !important;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #7c5ec9 0%, #9b7ed6 100%);
+            border: 1px solid #7c5ec9;
+            color: #fff !important;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #9b7ed6 0%, #b399e0 100%);
+            border-color: #9b7ed6;
+            color: #fff !important;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
+            border: 1px solid #4a5568;
+            color: #fff !important;
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+            border-color: #2d3748;
+            color: #fff !important;
+        }
+
+        .form-control,
+        .form-select {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(124, 94, 201, 0.3);
+            color: var(--dark-text);
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            background: rgba(255, 255, 255, 1);
+            border-color: var(--accent-purple);
+            color: var(--dark-text);
+            box-shadow: 0 0 0 0.25rem rgba(124, 94, 201, 0.15);
+        }
+
+        .form-control::placeholder {
+            color: rgba(45, 55, 72, 0.4);
+        }
+
+        label {
+            color: var(--dark-text);
+            font-weight: 500;
+        }
+
+        h3, h6 {
+            color: var(--dark-text);
+        }
+
+        h1, h2, h4, h5, p, span, small, a, div {
+            color: inherit;
+        }
+
+        small {
+            color: rgba(45, 55, 72, 0.7);
+        }
+
+        .card-body {
+            color: #2d3748;
         }
 
     </style>

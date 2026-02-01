@@ -11,7 +11,7 @@ $data = mysqli_query($koneksi, "SELECT * FROM tb_komen ORDER BY id_komen DESC");
 <div class="card shadow-sm">
     <div class="card-body">
         <table class="table table-bordered table-striped table-hover mb-0">
-            <thead class="table-primary">
+            <thead>
                 <!-- Header tabel komentar -->
                 <tr>
                     <th width="50">No</th>

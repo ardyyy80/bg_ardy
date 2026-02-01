@@ -15,7 +15,7 @@ $data = mysqli_query($koneksi, "SELECT * FROM tb_berita ORDER BY id_berita DESC"
 <div class="card shadow-sm">
     <div class="card-body">
         <table class="table table-bordered table-striped table-hover mb-0">
-            <thead class="table-primary"> <!-- bst=dark,info,primary -->
+            <thead>
                 <!-- Header tabel berita -->
                 <tr>
                     <th width="50">No</th>

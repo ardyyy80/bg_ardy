@@ -1,7 +1,7 @@
 <div class="d-flex">
     <div class="sidebar">
         <div class="sidebar-header">
-            <h5 class="text-white">ADMIN</h5>
+            <h5 class="text-black">ADMIN</h5>
         </div>
 
         <a href="dashboard.php" class="<?= ($active == 'dashboard') ? 'active' : '' ?>">Dashboard</a>

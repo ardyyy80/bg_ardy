@@ -15,7 +15,7 @@ $data = mysqli_query($koneksi, "SELECT * FROM tb_game ORDER BY id_game DESC");
 <div class="card shadow-sm">
     <div class="card-body">
         <table class="table table-bordered table-striped table-hover mb-0">
-            <thead class="table-primary">  <!-- bst=dark,info,primary -->
+            <thead>
                 <tr>
                     <th width="50">No</th>
                     <th>Judul</th>

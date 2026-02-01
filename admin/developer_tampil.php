@@ -15,7 +15,7 @@ $data = mysqli_query($koneksi, "SELECT * FROM tb_developer ORDER BY id_dev DESC"
 <div class="card shadow-sm">
     <div class="card-body">
         <table class="table table-bordered table-striped table-hover mb-0">
-            <thead class="table-primary">
+            <thead>
                 <!-- Header tabel developer -->
                 <tr>
                     <th width="50">No</th>
