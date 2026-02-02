@@ -1,4 +1,5 @@
 <?php
+include 'cek_login.php';
 $active = 'game';
 $page_title = 'Data Game';
 include 'layout/header.php';
@@ -38,9 +39,7 @@ $data = mysqli_query($koneksi, "SELECT * FROM tb_game ORDER BY id_game DESC");
                     <td><?= $g['tanggal_game'] ?></td>
                     <td>
                         <a href="game_input.php?id=<?= $g['id_game'] ?>" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="game_proses.php?hapus=<?= $g['id_game'] ?>"
-                           onclick="return confirm('Hapus data?')"
-                           class="btn btn-danger btn-sm">Hapus</a>
+                        <button onclick="confirmDelete(<?= $g['id_game'] ?>)" class="btn btn-danger btn-sm">Hapus</button>
                     </td>
                 </tr>
             <?php endwhile; ?>
@@ -48,5 +47,24 @@ $data = mysqli_query($koneksi, "SELECT * FROM tb_game ORDER BY id_game DESC");
         </table>
     </div>
 </div>
+
+<script>
+function confirmDelete(id) {
+    Swal.fire({
+        title: 'Konfirmasi Hapus',
+        text: 'Apakah Anda yakin ingin menghapus data ini?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Ya, Hapus',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = 'game_proses.php?hapus=' + id;
+        }
+    });
+}
+</script>
 
 <?php include 'layout/footer.php'; ?>

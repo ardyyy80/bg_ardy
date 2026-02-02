@@ -1,4 +1,5 @@
 <?php
+include 'cek_login.php';
 include '../config/koneksi.php';
 
 if (isset($_GET['hapus'])) {

@@ -1,4 +1,5 @@
 <?php
+include 'cek_login.php';
 $active = 'merch';
 $page_title = 'Merchandise';
 include 'layout/header.php';
@@ -38,9 +39,7 @@ $data = mysqli_query($koneksi, "SELECT * FROM tb_merch ORDER BY id_merch DESC");
                     <td>Rp <?= number_format($m['harga_merch'], 0, ',', '.') ?></td>
                     <td>
                         <a href="merch_input.php?id=<?= $m['id_merch'] ?>" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="merch_proses.php?hapus=<?= $m['id_merch'] ?>"
-                           onclick="return confirm('Hapus data?')"
-                           class="btn btn-danger btn-sm">Hapus</a>
+                        <button onclick="confirmDelete(<?= $m['id_merch'] ?>)" class="btn btn-danger btn-sm">Hapus</button>
                     </td>
                 </tr>
             <?php endwhile; ?>
@@ -48,5 +47,24 @@ $data = mysqli_query($koneksi, "SELECT * FROM tb_merch ORDER BY id_merch DESC");
         </table>
     </div>
 </div>
+
+<script>
+function confirmDelete(id) {
+    Swal.fire({
+        title: 'Konfirmasi Hapus',
+        text: 'Apakah Anda yakin ingin menghapus data ini?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Ya, Hapus',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = 'merch_proses.php?hapus=' + id;
+        }
+    });
+}
+</script>
 
 <?php include 'layout/footer.php'; ?>

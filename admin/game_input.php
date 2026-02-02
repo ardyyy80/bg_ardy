@@ -1,4 +1,5 @@
 <?php
+include 'cek_login.php';
 $active = 'game';
 include 'layout/header.php';
 include 'layout/sidebar.php';

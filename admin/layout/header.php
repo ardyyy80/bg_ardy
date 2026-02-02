@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         :root {
             --light-bg: #f5f7fa;
             --light-purple: #e8e4f3;
             --light-accent: #d4c5f9;
             --light-hover: #c5b3f0;
-            --accent-purple: #7c5ec9;
+            --accent-purple: #000000;
             --dark-text: #2d3748;
         }
 
