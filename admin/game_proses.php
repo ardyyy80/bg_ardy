@@ -1,6 +1,7 @@
 <?php
 include 'cek_login.php';
 include '../config/koneksi.php';
+include '../config/log_activity.php';
 
 /* ================= DELETE ================= */
 if (isset($_GET['hapus'])) {
@@ -15,6 +16,7 @@ if (isset($_GET['hapus'])) {
     }
 
     mysqli_query($koneksi, "DELETE FROM tb_game WHERE id_game='$id'");
+    log_activity($koneksi, 'Menghapus game', 'Game');
     header("Location: game_tampil.php");
     exit;
 }
@@ -44,6 +46,7 @@ if ($id) {
         tanggal_game='$tgl'
         WHERE id_game='$id'
     ");
+    log_activity($koneksi, "Mengupdate game: $judul", 'Game');
 } else {
     // INSERT
     mysqli_query($koneksi, "INSERT INTO tb_game VALUES (
@@ -53,6 +56,7 @@ if ($id) {
         '$detail',
         '$tgl'
     )");
+    log_activity($koneksi, "Menambah game: $judul", 'Game');
 }
 
 header("Location: game_tampil.php");

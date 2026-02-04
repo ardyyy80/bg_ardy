@@ -1,6 +1,7 @@
 <?php
 include 'cek_login.php';
 include '../config/koneksi.php';
+include '../config/log_activity.php';
 
 /* ===== DELETE ===== */
 if (isset($_GET['hapus'])) {
@@ -14,6 +15,7 @@ if (isset($_GET['hapus'])) {
     }
 
     mysqli_query($koneksi, "DELETE FROM tb_merch WHERE id_merch='$id'");
+    log_activity($koneksi, 'Menghapus merchandise', 'Merch');
     header("Location: merch_tampil.php");
     exit;
 }
@@ -42,6 +44,7 @@ if ($id) {
         detail_merch='$detail'
         WHERE id_merch='$id'
     ");
+    log_activity($koneksi, "Mengupdate merchandise: $judul", 'Merch');
 } else {
     mysqli_query($koneksi, "INSERT INTO tb_merch VALUES (
         NULL,
@@ -50,6 +53,7 @@ if ($id) {
         '$harga',
         '$detail'
     )");
+    log_activity($koneksi, "Menambah merchandise: $judul", 'Merch');
 }
 
 header("Location: merch_tampil.php");

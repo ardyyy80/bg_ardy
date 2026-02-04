@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'config/koneksi.php';
+include 'config/log_activity.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -23,6 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['login'] = true;
             $_SESSION['user_name'] = $row['user_name'];
             $_SESSION['nama_admin'] = $row['nama_admin'];
+            
+            log_activity($koneksi, 'Login ke sistem', 'Auth');
             
             header("Location: admin/dashboard.php");
             exit;

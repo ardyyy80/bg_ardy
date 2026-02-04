@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         :root {
@@ -26,18 +27,22 @@
         }
 
         .sidebar {
-            width: 240px;
+            width: 260px;
             min-height: 100vh;
             background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
             box-shadow: 2px 0 10px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            padding-top: 8px;
         }
 
         .sidebar-header {
-            height: 60px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-bottom: 1px solid rgba(124, 94, 201, 0.2);
+            margin-bottom: 12px;
         }
 
         .sidebar-header h5 {
@@ -51,7 +56,9 @@
             color: var(--dark-text);
             text-decoration: none;
             display: block;
-            padding: 12px 16px;
+            padding: 14px 20px;
+            margin: 8px 12px;
+            border-radius: 8px;
             border-left: 3px solid transparent;
             transition: all 0.3s ease;
         }
@@ -66,6 +73,20 @@
             color: var(--accent-purple);
             font-weight: bold;
             border-left-color: var(--accent-purple);
+        }
+
+        .sidebar .mt-auto {
+            padding: 16px 12px 20px 12px;
+            border-top: 1px solid rgba(124, 94, 201, 0.2);
+            margin-top: 12px;
+        }
+
+        .menu-icon {
+            display: inline-block;
+            margin-right: 12px;
+            font-size: 1.1em;
+            width: 20px;
+            text-align: center;
         }
 
         .header-top {
