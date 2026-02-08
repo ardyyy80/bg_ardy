@@ -1,7 +1,13 @@
 <div class="d-flex">
     <div class="sidebar">
-        <div class="sidebar-header">
-            <h5 style="color: #7c5ec9; font-weight: bold;">ADMIN</h5>
+        <div class="admin-profile">
+            <div class="profile-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="profile-info">
+                <div class="profile-name"><?= isset($_SESSION['nama_admin']) ? $_SESSION['nama_admin'] : 'Admin' ?></div>
+                <div class="profile-role">Admin</div>
+            </div>
         </div>
 
         <a href="dashboard.php" class="<?= ($active == 'dashboard') ? 'active' : '' ?>">
