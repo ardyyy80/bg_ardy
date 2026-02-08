@@ -6,8 +6,12 @@ include 'layout/header.php';
 include 'layout/sidebar.php';
 include '../config/koneksi.php';
 
-$merch = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as total FROM tb_merch"))['total'];
-$komen = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as total FROM tb_komen"))['total'];
+$result = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM tb_merch");
+$merch = mysqli_fetch_assoc($result)['total'];
+
+$result = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM tb_komen");
+$komen = mysqli_fetch_assoc($result)['total'];
+
 $activity_query = mysqli_query($koneksi, "SELECT * FROM tb_activity_log ORDER BY created_at DESC LIMIT 10");
 ?>
 

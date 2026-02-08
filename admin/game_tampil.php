@@ -39,7 +39,7 @@ $data = mysqli_query($koneksi, "SELECT * FROM tb_game ORDER BY id_game DESC");
                     <td><?= $g['tanggal_game'] ?></td>
                     <td>
                         <a href="game_input.php?id=<?= $g['id_game'] ?>" class="btn btn-warning btn-sm">Edit</a>
-                        <button onclick="confirmDelete(<?= $g['id_game'] ?>)" class="btn btn-danger btn-sm">Hapus</button>
+                        <button onclick="confirmDelete(<?= $g['id_game'] ?>, 'game_proses.php')" class="btn btn-danger btn-sm">Hapus</button>
                     </td>
                 </tr>
             <?php endwhile; ?>
@@ -47,24 +47,5 @@ $data = mysqli_query($koneksi, "SELECT * FROM tb_game ORDER BY id_game DESC");
         </table>
     </div>
 </div>
-
-<script>
-function confirmDelete(id) {
-    Swal.fire({
-        title: 'Konfirmasi Hapus',
-        text: 'Apakah Anda yakin ingin menghapus data ini?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Ya, Hapus',
-        cancelButtonText: 'Batal'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = 'game_proses.php?hapus=' + id;
-        }
-    });
-}
-</script>
 
 <?php include 'layout/footer.php'; ?>

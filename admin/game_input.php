@@ -5,12 +5,16 @@ include 'layout/header.php';
 include 'layout/sidebar.php';
 include '../config/koneksi.php';
 
-$id = $_GET['id'] ?? '';
+$id = intval($_GET['id'] ?? 0);
 $data = null;
 
-if ($id) {
-    $q = mysqli_query($koneksi, "SELECT * FROM tb_game WHERE id_game='$id'");
-    $data = mysqli_fetch_assoc($q);
+if ($id > 0) {
+    $stmt = mysqli_prepare($koneksi, "SELECT * FROM tb_game WHERE id_game = ?");
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $data = mysqli_fetch_assoc($result);
+    mysqli_stmt_close($stmt);
 }
 ?>
 
@@ -18,6 +22,7 @@ if ($id) {
 
 <form action="game_proses.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id_game" value="<?= $data['id_game'] ?? '' ?>">
+    <input type="hidden" name="foto_lama" value="<?= $data['foto_game'] ?? '' ?>">
 
     <div class="mb-3">
         <label>Judul Game</label>
@@ -29,7 +34,7 @@ if ($id) {
         <label>Foto Game</label>
         <input type="file" name="foto_game" class="form-control">
         <?php if (!empty($data['foto_game'])): ?>
-            <small>File lama: <?= $data['foto_game'] ?></small>
+            <small>Foto lama: <?= $data['foto_game'] ?></small>
         <?php endif; ?>
     </div>
 

@@ -30,7 +30,7 @@ $data = mysqli_query($koneksi, "SELECT * FROM tb_komen ORDER BY id_komen DESC");
                     <td><?= htmlspecialchars($k['detail_komen']) ?></td>
                     <td><?= $k['tanggal_komen'] ?></td>
                     <td>
-                        <button onclick="confirmDelete(<?= $k['id_komen'] ?>)" class="btn btn-danger btn-sm">Hapus</button>
+                        <button onclick="confirmDelete(<?= $k['id_komen'] ?>, 'komen_proses.php')" class="btn btn-danger btn-sm">Hapus</button>
                     </td>
                 </tr>
             <?php endwhile; ?>
@@ -38,24 +38,5 @@ $data = mysqli_query($koneksi, "SELECT * FROM tb_komen ORDER BY id_komen DESC");
         </table>
     </div>
 </div>
-
-<script>
-function confirmDelete(id) {
-    Swal.fire({
-        title: 'Konfirmasi Hapus',
-        text: 'Apakah Anda yakin ingin menghapus komentar ini?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Ya, Hapus',
-        cancelButtonText: 'Batal'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = 'komen_proses.php?hapus=' + id;
-        }
-    });
-}
-</script>
 
 <?php include 'layout/footer.php'; ?>

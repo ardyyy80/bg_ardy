@@ -5,12 +5,16 @@ include 'layout/header.php';
 include 'layout/sidebar.php';
 include '../config/koneksi.php';
 
-$id = $_GET['id'] ?? '';
+$id = intval($_GET['id'] ?? 0);
 $data = [];
 
-if ($id) {
-    $q = mysqli_query($koneksi, "SELECT * FROM tb_merch WHERE id_merch='$id'");
-    $data = mysqli_fetch_assoc($q);
+if ($id > 0) {
+    $stmt = mysqli_prepare($koneksi, "SELECT * FROM tb_merch WHERE id_merch = ?");
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $data = mysqli_fetch_assoc($result);
+    mysqli_stmt_close($stmt);
 }
 ?>
 
