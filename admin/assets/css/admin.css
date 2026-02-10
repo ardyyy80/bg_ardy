@@ -5,12 +5,15 @@
     --light-hover: #c5b3f0;
     --accent-purple: #000000;
     --dark-text: #2d3748;
+    --purple-primary: #7c5ec9;
+    --purple-border: rgba(124, 94, 201, 0.2);
+    --purple-overlay: rgba(124, 94, 201, 0.06);
 }
 
 body {
     min-height: 100vh;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e8e4f3 100%);
-    color: #2d3748;
+    background: linear-gradient(135deg, var(--light-bg) 0%, var(--light-purple) 100%);
+    color: var(--dark-text);
 }
 
 *, *::before, *::after {
@@ -20,8 +23,8 @@ body {
 .sidebar {
     width: 260px;
     min-height: 100vh;
-    background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
-    box-shadow: 2px 0 10px rgba(0,0,0,0.08);
+    background: linear-gradient(180deg, #fff 0%, #f8f9fa 100%);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
     padding-top: 8px;
@@ -32,7 +35,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid rgba(124, 94, 201, 0.2);
+    border-bottom: 1px solid var(--purple-border);
     margin-bottom: 20px;
 }
 
@@ -47,15 +50,15 @@ body {
     display: flex;
     align-items: center;
     padding: 12px 20px;
-    margin: 20px 12px 20px 12px;
-    background: rgba(124, 94, 201, 0.06);
+    margin: 20px 12px;
+    background: var(--purple-overlay);
     border-radius: 8px;
 }
 
 .profile-avatar {
     width: 36px;
     height: 36px;
-    background: #7c5ec9;
+    background: var(--purple-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -65,7 +68,7 @@ body {
 
 .profile-avatar i {
     font-size: 16px;
-    color: #ffffff;
+    color: #fff;
 }
 
 .profile-info {
@@ -81,7 +84,7 @@ body {
 
 .profile-role {
     font-size: 10px;
-    color: #7c5ec9;
+    color: var(--purple-primary);
     font-weight: 500;
 }
 
@@ -95,7 +98,7 @@ body {
     border-left: 3px solid transparent;
 }
 
-.sidebar a:hover {          
+.sidebar a:hover {
     background: var(--light-accent);
     color: var(--accent-purple);
     border-left-color: var(--accent-purple);
@@ -109,8 +112,8 @@ body {
 }
 
 .sidebar .mt-auto {
-    padding: 16px 12px 20px 12px;
-    border-top: 1px solid rgba(124, 94, 201, 0.2);
+    padding: 16px 12px 20px;
+    border-top: 1px solid var(--purple-border);
     margin-top: 12px;
 }
 
@@ -128,9 +131,9 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 1.5rem;
-    background: linear-gradient(90deg, #ffffff 0%, #f8f9fa 100%);
+    background: linear-gradient(90deg, #fff 0%, #f8f9fa 100%);
     border-bottom: 1px solid var(--accent-purple);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .header-top h3 {
@@ -145,19 +148,19 @@ body {
 
 .card {
     background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(124, 94, 201, 0.15);
+    border: 1px solid var(--purple-border);
     backdrop-filter: blur(10px);
 }
 
 .table {
-    color: #2d3748;
+    color: var(--dark-text);
     --bs-table-bg: transparent;
 }
 
 .table thead {
-    background: linear-gradient(135deg, #c5b3f0 0%, #d4c5f9 100%) !important;
-    color: #2d3748;
-    box-shadow: 0 2px 8px rgba(124, 94, 201, 0.15);
+    background: linear-gradient(135deg, var(--light-hover) 0%, var(--light-accent) 100%) !important;
+    color: var(--dark-text);
+    box-shadow: 0 2px 8px var(--purple-border);
     border-bottom: 2px solid var(--accent-purple);
 }
 
@@ -165,25 +168,24 @@ body {
     font-weight: 600;
     letter-spacing: 0.5px;
     padding: 14px 12px;
-    border-color: rgba(124, 94, 201, 0.2) !important;
-    color: #2d3748 !important;
+    border-color: var(--purple-border) !important;
+    color: var(--dark-text) !important;
 }
 
 .table tbody td {
     padding: 12px;
     vertical-align: middle;
-    border-color: rgba(124, 94, 201, 0.1);
-    color: #2d3748;
+    border-color: var(--purple-border);
+    color: var(--dark-text);
 }
 
 .table-bordered {
-    border-color: rgba(124, 94, 201, 0.2);
-    border-width: 1px;
+    border-color: var(--purple-border);
 }
 
 .table-bordered td,
 .table-bordered th {
-    border-color: rgba(124, 94, 201, 0.1);
+    border-color: var(--purple-border);
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -192,12 +194,12 @@ body {
 
 .table-hover tbody tr:hover {
     background-color: rgba(197, 179, 240, 0.25);
-    box-shadow: 0 2px 6px rgba(124, 94, 201, 0.15);
+    box-shadow: 0 2px 6px var(--purple-border);
 }
 
 .table img {
-    border: 2px solid rgba(124, 94, 201, 0.2);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 2px solid var(--purple-border);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .btn-danger {
@@ -238,8 +240,8 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #7c5ec9 0%, #9b7ed6 100%);
-    border: 1px solid #7c5ec9;
+    background: linear-gradient(135deg, var(--purple-primary) 0%, #9b7ed6 100%);
+    border: 1px solid var(--purple-primary);
     color: #fff !important;
 }
 
@@ -264,16 +266,16 @@ body {
 .form-control,
 .form-select {
     background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(124, 94, 201, 0.3);
+    border: 1px solid var(--purple-border);
     color: var(--dark-text);
 }
 
 .form-control:focus,
 .form-select:focus {
-    background: rgba(255, 255, 255, 1);
+    background: #fff;
     border-color: var(--accent-purple);
     color: var(--dark-text);
-    box-shadow: 0 0 0 0.25rem rgba(124, 94, 201, 0.15);
+    box-shadow: 0 0 0 0.25rem var(--purple-border);
 }
 
 .form-control::placeholder {
@@ -298,7 +300,7 @@ small {
 }
 
 .card-body {
-    color: #2d3748;
+    color: var(--dark-text);
 }
 
 .table-responsive {
@@ -311,17 +313,18 @@ small {
 }
 
 .table-responsive::-webkit-scrollbar-track {
-    background: rgba(124, 94, 201, 0.1);
+    background: var(--purple-overlay);
     border-radius: 4px;
 }
 
 .table-responsive::-webkit-scrollbar-thumb {
-    background: rgba(124, 94, 201, 0.5);
+    background: var(--purple-primary);
     border-radius: 4px;
+    opacity: 0.5;
 }
 
 .table-responsive::-webkit-scrollbar-thumb:hover {
-    background: rgba(124, 94, 201, 0.7);
+    opacity: 0.7;
 }
 
 .table-responsive .table thead {

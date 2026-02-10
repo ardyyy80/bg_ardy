@@ -13,7 +13,6 @@ $data = mysqli_query($koneksi, "SELECT * FROM tb_komen ORDER BY id_komen DESC");
     <div class="card-body">
         <table class="table table-bordered table-striped table-hover mb-0">
             <thead>
-                <!-- Header tabel komentar -->
                 <tr>
                     <th width="50">No</th>
                     <th>Nama Penulis</th>
@@ -23,12 +22,15 @@ $data = mysqli_query($koneksi, "SELECT * FROM tb_komen ORDER BY id_komen DESC");
                 </tr>
             </thead>
             <tbody>
-            <?php $no=1; while($k = mysqli_fetch_assoc($data)): ?>
+            <?php 
+            $no = 1;
+            while ($k = mysqli_fetch_assoc($data)):
+            ?>
                 <tr>
                     <td><?= $no++ ?></td>
                     <td><?= htmlspecialchars($k['nama_penulis']) ?></td>
                     <td><?= htmlspecialchars($k['detail_komen']) ?></td>
-                    <td><?= $k['tanggal_komen'] ?></td>
+                    <td><?= htmlspecialchars($k['tanggal_komen']) ?></td>
                     <td>
                         <button onclick="confirmDelete(<?= $k['id_komen'] ?>, 'komen_proses.php')" class="btn btn-danger btn-sm">Hapus</button>
                     </td>

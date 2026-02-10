@@ -32,21 +32,22 @@ if (isset($_GET['hapus'])) {
 $id = intval($_POST['id_merch'] ?? 0);
 $judul = sanitizeInput($koneksi, $_POST['judul_merch'] ?? '');
 $harga = floatval($_POST['harga_merch'] ?? 0);
+$stock = intval($_POST['stock_merch'] ?? 0);
 $detail = sanitizeInput($koneksi, $_POST['detail_merch'] ?? '');
 $foto_lama = sanitizeInput($koneksi, $_POST['foto_lama'] ?? '');
 
 $nama_foto = handleFileUpload($_FILES['foto_merch'] ?? [], $foto_lama);
 
 if ($id > 0) {
-    $stmt = mysqli_prepare($koneksi, "UPDATE tb_merch SET judul_merch = ?, foto_merch = ?, harga_merch = ?, detail_merch = ? WHERE id_merch = ?");
-    mysqli_stmt_bind_param($stmt, "ssdsi", $judul, $nama_foto, $harga, $detail, $id);
+    $stmt = mysqli_prepare($koneksi, "UPDATE tb_merch SET judul_merch = ?, foto_merch = ?, harga_merch = ?, stock_merch = ?, detail_merch = ? WHERE id_merch = ?");
+    mysqli_stmt_bind_param($stmt, "ssdisi", $judul, $nama_foto, $harga, $stock, $detail, $id);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     
     log_activity($koneksi, "Mengupdate merchandise: $judul", 'Merch');
 } else {
-    $stmt = mysqli_prepare($koneksi, "INSERT INTO tb_merch (judul_merch, foto_merch, harga_merch, detail_merch) VALUES (?, ?, ?, ?)");
-    mysqli_stmt_bind_param($stmt, "ssds", $judul, $nama_foto, $harga, $detail);
+    $stmt = mysqli_prepare($koneksi, "INSERT INTO tb_merch (judul_merch, foto_merch, harga_merch, stock_merch, detail_merch) VALUES (?, ?, ?, ?, ?)");
+    mysqli_stmt_bind_param($stmt, "ssdis", $judul, $nama_foto, $harga, $stock, $detail);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     

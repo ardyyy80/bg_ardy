@@ -21,13 +21,14 @@ if (isset($_SESSION['login'])) {
         <?php if (isset($_GET['error'])): ?>
             <div class="alert alert-danger">
                 <?php 
-                    if ($_GET['error'] == 'invalid') {
-                        echo "Username atau password salah!";
-                    } elseif ($_GET['error'] == 'empty') {
-                        echo "Username dan password harus diisi!";
-                    } elseif ($_GET['error'] == 'logout') {
-                        echo "Anda telah logout!";
-                    }
+                $error = $_GET['error'];
+                if ($error === 'invalid') {
+                    echo "Username atau password salah!";
+                } elseif ($error === 'empty') {
+                    echo "Username dan password harus diisi!";
+                } elseif ($error === 'logout') {
+                    echo "Anda telah logout!";
+                }
                 ?>
             </div>
         <?php endif; ?>

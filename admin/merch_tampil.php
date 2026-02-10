@@ -17,26 +17,30 @@ $data = mysqli_query($koneksi, "SELECT * FROM tb_merch ORDER BY id_merch DESC");
     <div class="card-body">
         <table class="table table-bordered table-striped table-hover mb-0">
             <thead>
-                <!-- Header tabel merchandise -->
                 <tr>
                     <th width="50">No</th>
                     <th>Judul</th>
                     <th width="120">Foto</th>
                     <th width="140">Harga</th>
+                    <th width="100">Stok</th>
                     <th width="200">Aksi</th>
                 </tr>
             </thead>
             <tbody>
-            <?php $no=1; while($m = mysqli_fetch_assoc($data)): ?>
+            <?php 
+            $no = 1;
+            while ($m = mysqli_fetch_assoc($data)):
+            ?>
                 <tr>
                     <td><?= $no++ ?></td>
-                    <td><?= $m['judul_merch'] ?></td>
+                    <td><?= htmlspecialchars($m['judul_merch']) ?></td>
                     <td>
                         <?php if ($m['foto_merch']): ?>
-                            <img src="../uploads/<?= $m['foto_merch'] ?>" width="80" class="rounded">
+                            <img src="../uploads/<?= htmlspecialchars($m['foto_merch']) ?>" width="80" class="rounded">
                         <?php endif; ?>
                     </td>
                     <td>Rp <?= number_format($m['harga_merch'], 0, ',', '.') ?></td>
+                    <td><?= number_format($m['stock_merch'], 0, ',', '.') ?></td>
                     <td>
                         <a href="merch_input.php?id=<?= $m['id_merch'] ?>" class="btn btn-warning btn-sm">Edit</a>
                         <button onclick="confirmDelete(<?= $m['id_merch'] ?>, 'merch_proses.php')" class="btn btn-danger btn-sm">Hapus</button>

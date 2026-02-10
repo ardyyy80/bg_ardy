@@ -5,17 +5,13 @@
                 <i class="fas fa-user"></i>
             </div>
             <div class="profile-info">
-                <div class="profile-name"><?= isset($_SESSION['nama_admin']) ? $_SESSION['nama_admin'] : 'Admin' ?></div>
+                <div class="profile-name"><?= htmlspecialchars($_SESSION['nama_admin'] ?? 'Admin') ?></div>
                 <div class="profile-role">Admin</div>
             </div>
         </div>
 
         <a href="dashboard.php" class="<?= ($active == 'dashboard') ? 'active' : '' ?>">
             <i class="fas fa-chart-line menu-icon"></i> Dashboard
-        </a>
-
-        <a href="game_tampil.php" class="<?= ($active == 'game') ? 'active' : '' ?>">
-            <i class="fas fa-gamepad menu-icon"></i> Data Game
         </a>
 
         <a href="merch_tampil.php" class="<?= ($active == 'merch') ? 'active' : '' ?>">
@@ -35,7 +31,7 @@
 
     <div class="flex-fill">
         <div class="header-top">
-            <h3><?= isset($page_title) ? $page_title : 'Admin Panel' ?></h3>
+            <h3><?= htmlspecialchars($page_title ?? 'Admin Panel') ?></h3>
         </div>
 
         <div class="content p-4">

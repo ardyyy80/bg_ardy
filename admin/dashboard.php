@@ -54,26 +54,24 @@ $activity_query = mysqli_query($koneksi, "SELECT * FROM tb_activity_log ORDER BY
                             </tr>
                         </thead>
                         <tbody>
-                            <?php 
-                            if (mysqli_num_rows($activity_query) > 0) {
+                            <?php if (mysqli_num_rows($activity_query) > 0): ?>
+                                <?php 
                                 $no = 1;
-                                while ($activity = mysqli_fetch_assoc($activity_query)) { 
-                            ?>
-                            <tr>
-                                <td><?= $no++ ?></td>
-                                <td><?= htmlspecialchars($activity['nama_admin']) ?></td>
-                                <td><?= htmlspecialchars($activity['activity']) ?></td>
-                                <td><span class="badge bg-primary"><?= htmlspecialchars($activity['module']) ?></span></td>
-                                <td><?= date('d/m/Y H:i:s', strtotime($activity['created_at'])) ?></td>
-                            </tr>
-                            <?php 
-                                }
-                            } else {
-                            ?>
-                            <tr>
-                                <td colspan="5" class="text-center">Belum ada aktivitas</td>
-                            </tr>
-                            <?php } ?>
+                                while ($activity = mysqli_fetch_assoc($activity_query)): 
+                                ?>
+                                <tr>
+                                    <td><?= $no++ ?></td>
+                                    <td><?= htmlspecialchars($activity['nama_admin']) ?></td>
+                                    <td><?= htmlspecialchars($activity['activity']) ?></td>
+                                    <td><span class="badge bg-primary"><?= htmlspecialchars($activity['module']) ?></span></td>
+                                    <td><?= date('d/m/Y H:i:s', strtotime($activity['created_at'])) ?></td>
+                                </tr>
+                                <?php endwhile; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="5" class="text-center">Belum ada aktivitas</td>
+                                </tr>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
