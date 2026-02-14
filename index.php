@@ -124,7 +124,7 @@ $komen_data = mysqli_query($koneksi, "SELECT * FROM tb_komen ORDER BY id_komen D
                             <p class="merch-detail"><?= nl2br(htmlspecialchars($m['detail_merch'])) ?></p>
                         <?php endif; ?>
                         <?php
-                        $wa_number = "6281234567890";
+                        $wa_number = "6282131266756";
                         $message = "Halo, saya tertarik untuk membeli *" . $m['judul_merch'] . "* dengan harga Rp " . number_format($m['harga_merch'], 0, ',', '.') . ". Apakah masih tersedia?";
                         $wa_link = "https://wa.me/" . $wa_number . "?text=" . urlencode($message);
                         ?>
