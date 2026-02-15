@@ -26,10 +26,19 @@
         <div class="container">
             <h1 class="page-title">Cara Bermain Tapak Arwah Nusantara</h1>
             
+            <div class="board-preview-section">
+                <div class="board-preview-card">
+                    <img src="assets/Arena%20Tapak%20Arwah%20Nusantara.png" alt="Arena Tapak Arwah Nusantara" class="board-preview-image">
+                    <div class="board-preview-caption">
+                        <span class="caption-text">Papan Permainan</span>
+                    </div>
+                </div>
+            </div>
+            
             <div class="game-detail-content">
-                <div class="detail-section">
+                <div class="detail-section highlight-section">
                     <h2>Persiapan Permainan</h2>
-                    <ol>
+                    <ol class="elegant-list">
                         <li>Letakkan papan permainan di tengah meja</li>
                         <li>Setiap pemain memilih karakter pemburu arwah dan mengambil pawn sesuai warna</li>
                         <li>Kocok deck kartu artefak dan letakkan menghadap ke bawah</li>
@@ -39,12 +48,14 @@
                     </ol>
                 </div>
 
-                <div class="detail-section">
+                <div class="detail-section goal-section">
                     <h2>Tujuan Permainan</h2>
-                    <p>
-                        Menjadi pemain pertama yang mengumpulkan 5 artefak mistis dari berbagai daerah di Nusantara 
-                        sambil mempertahankan nyawa Anda dari serangan makhluk supernatural.
-                    </p>
+                    <div class="goal-content">
+                        <p>
+                            Menjadi pemain pertama yang mengumpulkan 5 artefak mistis dari berbagai daerah di Nusantara 
+                            sambil mempertahankan nyawa Anda dari serangan makhluk supernatural.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="detail-section">
@@ -66,13 +77,13 @@
 
                 <div class="detail-section">
                     <h2>Jenis Lokasi di Papan</h2>
-                    <ul>
-                        <li><strong>🏛️ Candi:</strong> Lokasi artefak Jawa</li>
-                        <li><strong>🌴 Hutan:</strong> Lokasi artefak Kalimantan</li>
-                        <li><strong>⛰️ Gunung:</strong> Lokasi artefak Sumatra</li>
-                        <li><strong>🏝️ Pulau:</strong> Lokasi artefak Sulawesi</li>
-                        <li><strong>🏠 Rumah Adat:</strong> Lokasi pemulihan nyawa</li>
-                        <li><strong>💀 Zona Gelap:</strong> Area berbahaya, ambil 2 kartu kejadian</li>
+                    <ul class="location-list">
+                        <li><strong>Candi:</strong> Lokasi artefak Jawa</li>
+                        <li><strong>Hutan:</strong> Lokasi artefak Kalimantan</li>
+                        <li><strong>Gunung:</strong> Lokasi artefak Sumatra</li>
+                        <li><strong>Pulau:</strong> Lokasi artefak Sulawesi</li>
+                        <li><strong>Rumah Adat:</strong> Lokasi pemulihan nyawa</li>
+                        <li><strong>Zona Gelap:</strong> Area berbahaya, ambil 2 kartu kejadian</li>
                     </ul>
                 </div>
 
@@ -100,19 +111,23 @@
                     </ul>
                 </div>
 
-                <div class="detail-section">
+                <div class="detail-section win-section">
                     <h2>Kondisi Menang</h2>
-                    <p>Pemain yang pertama kali mengumpulkan 5 artefak dari minimal 3 daerah berbeda memenangkan permainan.</p>
+                    <div class="win-content">
+                        <p>Pemain yang pertama kali mengumpulkan 5 artefak dari minimal 3 daerah berbeda memenangkan permainan.</p>
+                    </div>
                 </div>
 
-                <div class="detail-section">
+                <div class="detail-section lose-section">
                     <h2>Kondisi Kalah</h2>
-                    <p>Jika nyawa pemain habis (0 poin), pemain tersebut gugur dan tidak dapat melanjutkan permainan.</p>
+                    <div class="lose-content">
+                        <p>Jika nyawa pemain habis (0 poin), pemain tersebut gugur dan tidak dapat melanjutkan permainan.</p>
+                    </div>
                 </div>
 
-                <div class="detail-section">
+                <div class="detail-section tips-section">
                     <h2>Tips Strategi</h2>
-                    <ul>
+                    <ul class="tips-list">
                         <li>Kumpulkan kartu aksi khusus untuk proteksi</li>
                         <li>Hindari zona gelap jika nyawa sedang rendah</li>
                         <li>Manfaatkan rumah adat untuk memulihkan nyawa sebelum masuk area berbahaya</li>
@@ -121,8 +136,8 @@
                     </ul>
                 </div>
 
-                <div class="detail-section">
-                    <h2>Variasi Permainan (Opsional)</h2>
+                <div class="detail-section variant-section">
+                    <h2>Variasi Permainan</h2>
                     <h3>Mode Kooperatif</h3>
                     <p>Semua pemain bekerja sama melawan deck kejadian untuk mengumpulkan total 15 artefak sebelum waktu habis.</p>
                     
@@ -130,7 +145,14 @@
                     <p>Tambahkan kartu bos arwah yang muncul setiap 5 giliran. Pemain harus mengalahkan bos bersama-sama atau kehilangan artefak.</p>
                 </div>
 
-                <a href="index.php#game" class="btn btn-primary">Kembali ke Home</a>
+                <div class="back-button-container">
+                    <a href="index.php#game" class="btn btn-primary btn-elegant btn-back">
+                        <svg class="btn-icon-left" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        <span>Kembali ke Home</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>

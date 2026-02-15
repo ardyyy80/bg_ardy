@@ -63,24 +63,59 @@ $komen_data = mysqli_query($koneksi, "SELECT * FROM tb_komen ORDER BY id_komen D
     <section id="game" class="game-section">
         <div class="container">
             <h2 class="section-title">Game Preview</h2>
-            <div class="game-card">
-                <div class="game-preview">
-                    <img src="assets/Arena%20Tapak%20Arwah%20Nusantara.png" alt="Arena Tapak Arwah Nusantara" class="board-image">
-                </div>
-                <div class="game-info">
-                    <h3>Tapak Arwah Nusantara Board Game</h3>
-                    <p>
-                        Board game strategi untuk 2-4 pemain yang membawa Anda menjelajahi dunia mistis Nusantara. 
-                        Setiap pemain berperan sebagai pemburu arwah yang harus mengumpulkan artefak mistis sambil 
-                        menghindari kutukan dan makhluk supernatural.
-                    </p>
-                    <ul class="game-features">
-                        <li>🎲 2-4 Pemain</li>
-                        <li>⏱️ Durasi: 45-90 menit</li>
-                        <li>👻 Tema: Supernatural Indonesia</li>
-                        <li>🎯 Strategi & Petualangan</li>
-                    </ul>
-                    <a href="detail_game.php" class="btn btn-primary">Cara Bermain</a>
+            <div class="game-showcase">
+                <div class="game-card-elegant">
+                    <div class="game-preview-elegant">
+                        <div class="image-frame">
+                            <img src="assets/Arena%20Tapak%20Arwah%20Nusantara.png" alt="Arena Tapak Arwah Nusantara" class="board-image-elegant">
+                            <div class="image-overlay">
+                                <span class="overlay-badge">Papan Permainan</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game-info-elegant">
+                        <div class="game-header">
+                            <h3 class="game-title-elegant">Tapak Arwah Nusantara</h3>
+                            <span class="game-subtitle">Board Game Premium</span>
+                        </div>
+                        <p class="game-description">
+                            Board game strategi untuk 2-4 pemain yang membawa Anda menjelajahi dunia mistis Nusantara. 
+                            Setiap pemain berperan sebagai pemburu arwah yang harus mengumpulkan artefak mistis sambil 
+                            menghindari kutukan dan makhluk supernatural.
+                        </p>
+                        <div class="game-specs">
+                            <div class="spec-item">
+                                <div class="spec-content">
+                                    <span class="spec-label">Pemain</span>
+                                    <span class="spec-value">2-4 Orang</span>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-content">
+                                    <span class="spec-label">Durasi</span>
+                                    <span class="spec-value">45-90 Menit</span>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-content">
+                                    <span class="spec-label">Tema</span>
+                                    <span class="spec-value">Supernatural Indonesia</span>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-content">
+                                    <span class="spec-label">Genre</span>
+                                    <span class="spec-value">Strategi & Petualangan</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="detail_game.php" class="btn btn-primary btn-elegant">
+                            <span>Cara Bermain</span>
+                            <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
