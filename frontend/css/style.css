@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Inria+Serif:wght@300;400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -46,7 +48,6 @@ body {
     color: #fff;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s;
 }
 
 .nav-menu a:hover {
@@ -64,19 +65,21 @@ body {
 }
 
 .hero-logo {
-    width: 200px;
+    width: 555px;
     height: auto;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 .hero-title {
+    font-family: 'alegreya', serif;
     font-size: 3rem;
     color: #3A0606;
-    margin-bottom: 20px;
+    margin-bottom: 1px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
 .hero-description {
+    font-family: 'Inter', sans-serif;
     font-size: 1.2rem;
     color: #555;
     line-height: 1.8;
@@ -84,50 +87,100 @@ body {
 
 .about-section {
     padding: 80px 0;
-    background: #f8f9fa;
+    background: #EBD5AB;
 }
-
 .section-title {
+    font-family: 'Inria Serif', serif;
     font-size: 2.5rem;
     color: #3A0606;
     text-align: center;
     margin-bottom: 50px;
 }
-
 .profile-card {
     background: #fff;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    padding: 40px;
+    padding: 30px 40px;
     display: flex;
     gap: 40px;
     align-items: center;
+    max-height: 250px;
+    overflow: visible;
+    position: relative;
+    border: 4px solid #3A0606;
 }
-
+.profile-image {
+    position: relative;
+    margin: -80px 0 -80px -60px;
+    flex-shrink: 0;
+}
 .profile-image img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+    width: 250px;
+    height: 300px;
+    border-radius: 15px;
     object-fit: cover;
-    border: 5px solid #3A0606;
+    border: 4px solid #3A0606;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
-
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: -50px; /* BARU: Extend ke kiri sampai area foto */
+}
 .profile-info h3 {
-    font-size: 2rem;
+    font-family: 'Inria Serif', serif;
+    font-size: 3.5rem;
     color: #3A0606;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-left: 250px; /* BARU: Kembalikan margin untuk judul */
+    font-weight: 600;
 }
-
-.profile-info p {
-    font-size: 1.1rem;
+.profile-quote {
+    background: linear-gradient(135deg, #F5E9D0 0%, #EBD5AB 100%);
+    padding: 20px 25px 20px 40px; /* UBAH: Padding kiri lebih besar */
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border-left: none;
+    border-right: 4px solid #3A0606;
+}
+.quote-header {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    margin-bottom: 1px;
+}
+.quote-icon {
+    width: 24px;
+    height: 24px;
+    color: #3A0606;
+    opacity: 0.7;
+    margin-top: -12px;
+}
+.quote-title {
+    font-family: 'Inria Serif', serif;
+    font-size: 1.8rem;
+    color: #3A0606;
+    font-weight: 700;
+}
+.quote-text {
+    font-size: 1.5rem;
     color: #555;
-    margin-bottom: 15px;
-    text-align: justify;
+    line-height: 1.6;
+    margin: 0;
+    padding-left: 25px;
+}
+.profile-desc {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 500;
+    margin: 0;
+    margin-left: 40px; /* BARU: Kembalikan margin untuk deskripsi */
 }
 
 .game-section {
     padding: 80px 0;
-    background: #fff;
+    background: #EBD5AB;
 }
 
 .game-card {
@@ -173,6 +226,7 @@ body {
 }
 
 .game-info h3 {
+    font-family: 'Alegreya', serif;
     font-size: 2rem;
     color: #3A0606;
     margin-bottom: 20px;
@@ -202,7 +256,6 @@ body {
     border-radius: 25px;
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s;
     border: none;
     cursor: pointer;
     font-size: 1rem;
@@ -213,24 +266,14 @@ body {
     color: #fff;
 }
 
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(58, 6, 6, 0.3);
-}
-
 .btn-success {
     background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
     color: #fff;
 }
 
-.btn-success:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-}
-
 .merchandise-section {
     padding: 80px 0;
-    background: #f8f9fa;
+    background: #EBD5AB;
 }
 
 .merch-grid {
@@ -244,11 +287,6 @@ body {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-}
-
-.merch-card:hover {
-    transform: translateY(-5px);
 }
 
 .merch-image {
@@ -299,7 +337,7 @@ body {
 
 .comment-section {
     padding: 80px 0;
-    background: #fff;
+    background: #EBD5AB;
 }
 
 .comment-wrapper {
@@ -308,7 +346,7 @@ body {
 }
 
 .comment-form {
-    background: #f8f9fa;
+    background: #F5E9D0;
     padding: 30px;
     border-radius: 15px;
     margin-bottom: 40px;
@@ -333,7 +371,6 @@ body {
     border-radius: 8px;
     font-size: 1rem;
     font-family: inherit;
-    transition: border-color 0.3s;
 }
 
 .form-group input:focus,
@@ -343,13 +380,14 @@ body {
 }
 
 .comments-list h3 {
+    font-family: 'Inria Serif', serif;
     font-size: 1.8rem;
     color: #3A0606;
     margin-bottom: 20px;
 }
 
 .comment-item {
-    background: #f8f9fa;
+    background: #F5E9D0;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 15px;
@@ -386,10 +424,11 @@ body {
 
 .detail-game-section {
     padding: 100px 0 80px 0;
-    background: #f8f9fa;
+    background: #EBD5AB;
 }
 
 .page-title {
+    font-family: 'Inria Serif', serif;
     font-size: 3rem;
     color: #3A0606;
     text-align: center;
@@ -408,6 +447,7 @@ body {
 }
 
 .detail-section h2 {
+    font-family: 'Inria Serif', serif;
     font-size: 2rem;
     color: #3A0606;
     margin-bottom: 20px;
@@ -416,6 +456,7 @@ body {
 }
 
 .detail-section h3 {
+    font-family: 'Inria Serif', serif;
     font-size: 1.5rem;
     color: #5A0808;
     margin: 20px 0 15px 0;
@@ -446,6 +487,55 @@ body {
     margin-top: 10px;
     margin-left: 20px;
 }
+
+
+
+.loading-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    color: #666;
+    font-size: 1.2rem;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #EBD5AB;
+    border-top-color: #3A0606;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: #F5E9D0;
+    border-radius: 15px;
+    margin: 20px 0;
+}
+
+.empty-state-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.3;
+}
+
+.empty-state-title {
+    font-family: 'Inria Serif', serif;
+    font-size: 1.5rem;
+    color: #3A0606;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.empty-state-message {
+    font-size: 1rem;
+    color: #666;
+}
+
+
 
 @media (max-width: 968px) {
     .merch-grid {

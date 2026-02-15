@@ -33,8 +33,8 @@ $komen_data = mysqli_query($koneksi, "SELECT * FROM tb_komen ORDER BY id_komen D
             <img src="assets/logoutama.png" alt="Logo Tapak Arwah Nusantara" class="hero-logo">
             <h1 class="hero-title">Tapak Arwah Nusantara</h1>
             <p class="hero-description">
-                Sebuah board game petualangan yang mengangkat cerita mistis dan legenda dari berbagai daerah di Nusantara. 
-                Jelajahi dunia supernatural Indonesia melalui permainan strategi yang menegangkan dan penuh misteri.
+                Langkahkan takdirmu, Hadapi arwah.<br>
+                Rebut takhta Nusantara.
             </p>
         </div>
     </section>
@@ -44,20 +44,18 @@ $komen_data = mysqli_query($koneksi, "SELECT * FROM tb_komen ORDER BY id_komen D
             <h2 class="section-title">About</h2>
             <div class="profile-card">
                 <div class="profile-image">
-                    <img src="assets/WhatsApp Image 2026-02-07 at 05.31.02.jpeg" alt="Developer">
+                    <img src="assets/WhatsApp Image 2026-02-07 at 05.31.02.jpeg" alt="M Ardy Irwansyah">
                 </div>
                 <div class="profile-info">
-                    <h3>Tim Tapak Arwah Nusantara</h3>
-                    <p>
-                        Kami adalah tim developer yang berdedikasi untuk menghadirkan board game berkualitas tinggi 
-                        yang menggabungkan unsur budaya Indonesia dengan mekanik permainan modern. Misi kami adalah 
-                        melestarikan cerita dan legenda Nusantara melalui media permainan yang interaktif dan menghibur.
-                    </p>
-                    <p>
-                        Tapak Arwah Nusantara adalah proyek pertama kami yang menggabungkan strategi, storytelling, 
-                        dan elemen horor supernatural khas Indonesia dalam satu pengalaman bermain yang tak terlupakan.
-                    </p>
-                </div>
+                    <h3>M Ardy Irwansyah</h3>
+                    <div class="profile-quote">
+                        <div class="quote-header">
+                            <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                            </svg>
+                            <strong class="quote-title">Singkat Cerita</strong>
+                        </div>
+                        <p class="quote-text">Pelajar yang ingin Belajar</p>
             </div>
         </div>
     </section>
