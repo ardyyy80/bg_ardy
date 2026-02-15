@@ -160,6 +160,14 @@ body {
     border: 2px solid #8B4513;
 }
 
+.board-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
 .game-info {
     flex: 1;
 }

@@ -10,7 +10,7 @@
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
             <div class="logo">
-                <img src="assets/WhatsApp_Image_2026-02-07_at_04.05.42-removebg-preview.png" alt="Logo Tapak Arwah Nusantara">
+                <img src="assets/logonavbar.png" alt="Logo Tapak Arwah Nusantara">
             </div>
             <ul class="nav-menu">
                 <li><a href="index.php#home">Home</a></li>

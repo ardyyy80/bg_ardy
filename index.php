@@ -16,7 +16,7 @@ $komen_data = mysqli_query($koneksi, "SELECT * FROM tb_komen ORDER BY id_komen D
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
             <div class="logo">
-                <img src="assets/WhatsApp_Image_2026-02-07_at_04.05.42-removebg-preview.png" alt="Logo Tapak Arwah Nusantara">
+                <img src="assets/logonavbar.png" alt="Logo Tapak Arwah Nusantara">
             </div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
@@ -30,7 +30,7 @@ $komen_data = mysqli_query($koneksi, "SELECT * FROM tb_komen ORDER BY id_komen D
 
     <section id="home" class="hero-section">
         <div class="container hero-content">
-            <img src="assets/WhatsApp_Image_2026-02-07_at_04.05.42-removebg-preview.png" alt="Logo Tapak Arwah Nusantara" class="hero-logo">
+            <img src="assets/logoutama.png" alt="Logo Tapak Arwah Nusantara" class="hero-logo">
             <h1 class="hero-title">Tapak Arwah Nusantara</h1>
             <p class="hero-description">
                 Sebuah board game petualangan yang mengangkat cerita mistis dan legenda dari berbagai daerah di Nusantara. 
@@ -41,10 +41,10 @@ $komen_data = mysqli_query($koneksi, "SELECT * FROM tb_komen ORDER BY id_komen D
 
     <section id="about" class="about-section">
         <div class="container">
-            <h2 class="section-title">About Developer</h2>
+            <h2 class="section-title">About</h2>
             <div class="profile-card">
                 <div class="profile-image">
-                    <img src="assets/WhatsApp_Image_2026-02-07_at_04.05.42-removebg-preview.png" alt="Developer">
+                    <img src="assets/WhatsApp Image 2026-02-07 at 05.31.02.jpeg" alt="Developer">
                 </div>
                 <div class="profile-info">
                     <h3>Tim Tapak Arwah Nusantara</h3>
@@ -67,24 +67,7 @@ $komen_data = mysqli_query($koneksi, "SELECT * FROM tb_komen ORDER BY id_komen D
             <h2 class="section-title">Game Preview</h2>
             <div class="game-card">
                 <div class="game-preview">
-                    <div class="board-grid">
-                        <div class="grid-cell"></div>
-                        <div class="grid-cell"></div>
-                        <div class="grid-cell"></div>
-                        <div class="grid-cell"></div>
-                        <div class="grid-cell"></div>
-                        <div class="grid-cell"></div>
-                        <div class="grid-cell"></div>
-                        <div class="grid-cell"></div>
-                        <div class="grid-cell"></div>
-                        <div class="grid-cell"></div>
-                        <div class="grid-cell"></div>
-                        <div class="grid-cell"></div>
-                        <div class="grid-cell"></div>
-                        <div class="grid-cell"></div>
-                        <div class="grid-cell"></div>
-                        <div class="grid-cell"></div>
-                    </div>
+                    <img src="assets/Arena%20Tapak%20Arwah%20Nusantara.png" alt="Arena Tapak Arwah Nusantara" class="board-image">
                 </div>
                 <div class="game-info">
                     <h3>Tapak Arwah Nusantara Board Game</h3>
