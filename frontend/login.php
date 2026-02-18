@@ -1,12 +1,14 @@
 <?php
 session_start();
+require_once '../backend/config/constants.php';
+require_once '../backend/config/helpers.php';
 
-$isAlreadyLoggedIn = isset($_SESSION['login']);
-
-if ($isAlreadyLoggedIn) {
-    header("Location: ../backend/admin/dashboard.php");
-    exit;
+if (isset($_SESSION['login'])) {
+    redirectTo('../backend/admin/dashboard.php');
 }
+
+$errorMessage = getFlashMessage('error');
+$successMessage = getFlashMessage('success');
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -20,17 +22,15 @@ if ($isAlreadyLoggedIn) {
     <div class="login-container">
         <h2>Login</h2>
         
-        <?php if (isset($_GET['error'])): ?>
+        <?php if ($errorMessage): ?>
             <div class="alert alert-danger">
-                <?php 
-                $errorType = $_GET['error'];
-                $errorMessages = [
-                    'invalid' => 'Username atau password salah!',
-                    'empty' => 'Username dan password harus diisi!',
-                    'logout' => 'Anda telah logout!'
-                ];
-                echo $errorMessages[$errorType] ?? 'Terjadi kesalahan!';
-                ?>
+                <?= sanitizeOutput($errorMessage) ?>
+            </div>
+        <?php endif; ?>
+        
+        <?php if ($successMessage): ?>
+            <div class="alert alert-success">
+                <?= sanitizeOutput($successMessage) ?>
             </div>
         <?php endif; ?>
 

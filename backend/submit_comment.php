@@ -1,28 +1,28 @@
 <?php
-include 'config/koneksi.php';
+session_start();
+require_once 'config/koneksi.php';
+require_once 'config/helpers.php';
+require_once 'services/CommentService.php';
 
-$isPostRequest = $_SERVER['REQUEST_METHOD'] === 'POST';
-
-if (!$isPostRequest) {
-    header("Location: ../frontend/index.php");
-    exit;
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    redirectTo('../frontend/index.php');
 }
 
-$authorName = mysqli_real_escape_string($koneksi, $_POST['nama_penulis']);
-$commentText = mysqli_real_escape_string($koneksi, $_POST['detail_komen']);
-$currentDateTime = date('Y-m-d H:i:s');
+$authorName = trim($_POST['nama_penulis'] ?? '');
+$commentText = trim($_POST['detail_komen'] ?? '');
 
-$query = "INSERT INTO tb_komen (nama_penulis, detail_komen, tanggal_komen) VALUES (?, ?, ?)";
-$statement = mysqli_prepare($koneksi, $query);
-mysqli_stmt_bind_param($statement, "sss", $authorName, $commentText, $currentDateTime);
+if (empty($authorName) || empty($commentText)) {
+    setFlashMessage('error', 'Nama dan komentar harus diisi!');
+    redirectTo('../frontend/index.php#comment');
+}
 
-$isSuccess = mysqli_stmt_execute($statement);
+$commentService = new CommentService($koneksi);
+$success = $commentService->createComment($authorName, $commentText);
 
-mysqli_stmt_close($statement);
-
-if ($isSuccess) {
-    header("Location: ../frontend/index.php#comment");
-    exit;
+if ($success) {
+    setFlashMessage('success', 'Komentar berhasil dikirim!');
 } else {
-    echo "Error: " . mysqli_error($koneksi);
+    setFlashMessage('error', 'Gagal mengirim komentar!');
 }
+
+redirectTo('../frontend/index.php#comment');

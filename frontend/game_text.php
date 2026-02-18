@@ -1,10 +1,26 @@
 <?php
+
+define('BOARD_IMAGE', 'assets/Arena Tapak Arwah Nusantara.png');
+
 return [
     'page_title' => 'Cara Bermain Tapak Arwah Nusantara',
     
     'board_preview' => [
-        'image' => 'assets/Arena%20Tapak%20Arwah%20Nusantara.png',
+        'image' => BOARD_IMAGE,
         'caption' => 'Papan Permainan'
+    ],
+    
+    'komponen' => [
+        'title' => 'Komponen Permainan',
+        'items' => [
+            ['name' => 'Papan Permainan', 'image' => BOARD_IMAGE],
+            ['name' => 'Kartu Buff', 'image' => 'assets/cardbuff.png'],
+            ['name' => 'Kartu Debuff', 'image' => 'assets/carddebuff.png'],
+            ['name' => 'Pion Merah', 'image' => 'assets/pion1.jpeg'],
+            ['name' => 'Pion Biru', 'image' => 'assets/pion2.jpeg'],
+            ['name' => 'Token Nyawa', 'image' => 'assets/logoutama.png'],
+            ['name' => 'Dadu', 'image' => 'assets/dadu.png']
+        ]
     ],
     
     'persiapan' => [
@@ -28,12 +44,9 @@ return [
         'title' => 'Giliran Pemain',
         'intro' => 'Setiap giliran pemain terdiri dari fase-fase berikut:',
         'phases' => [
+            ['name' => 'Fase Pergerakan:', 'desc' => 'Lempar dadu dan gerakkan pawn sesuai angka yang keluar'],
             [
-                'name' => 'Fase Pergerakan:',
-                'desc' => 'Lempar dadu dan gerakkan pawn sesuai angka yang keluar'
-            ],
-            [
-                'name' => 'Fase Aksi:',
+                'name' => 'Fase Aksi:', 
                 'desc' => 'Lakukan salah satu aksi berikut:',
                 'sub_items' => [
                     'Ambil kartu artefak jika berada di lokasi artefak',
@@ -41,14 +54,8 @@ return [
                     'Beristirahat untuk memulihkan 1 poin nyawa'
                 ]
             ],
-            [
-                'name' => 'Fase Kejadian:',
-                'desc' => 'Ambil 1 kartu kejadian dan ikuti instruksinya'
-            ],
-            [
-                'name' => 'Fase Akhir:',
-                'desc' => 'Giliran berakhir, pemain berikutnya memulai giliran'
-            ]
+            ['name' => 'Fase Kejadian:', 'desc' => 'Ambil 1 kartu kejadian dan ikuti instruksinya'],
+            ['name' => 'Fase Akhir:', 'desc' => 'Giliran berakhir, pemain berikutnya memulai giliran']
         ]
     ],
     

@@ -1,5 +1,9 @@
 <?php
-$text = include 'game_text.php';
+$text = require_once 'game_text.php';
+
+if (!is_array($text)) {
+    die('Error loading game content');
+}
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -18,7 +22,7 @@ $text = include 'game_text.php';
             <ul class="nav-menu">
                 <li><a href="index.php#home">Home</a></li>
                 <li><a href="index.php#about">About</a></li>
-                <li><a href="index.php#game">Game</a></li>
+                <li><a href="index.php#game" class="active">Game</a></li>
                 <li><a href="index.php#merchandise">Merchandise</a></li>
                 <li><a href="index.php#comment">Comment</a></li>
             </ul>
@@ -39,6 +43,20 @@ $text = include 'game_text.php';
             </div>
             
             <div class="game-detail-content">
+                <div class="detail-section">
+                    <h2><?= $text['komponen']['title'] ?></h2>
+                    <div class="components-grid">
+                        <?php foreach($text['komponen']['items'] as $komponen): ?>
+                        <div class="component-card">
+                            <div class="component-image">
+                                <img src="<?= $komponen['image'] ?>" alt="<?= $komponen['name'] ?>">
+                            </div>
+                            <h3><?= $komponen['name'] ?></h3>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
                 <div class="detail-section highlight-section">
                     <h2><?= $text['persiapan']['title'] ?></h2>
                     <ol class="elegant-list">

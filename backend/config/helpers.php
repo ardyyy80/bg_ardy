@@ -1,48 +1,52 @@
 <?php
 
-function uploadFile($file, $uploadDirectory = '../uploads/') {
-    if (empty($file['name'])) {
-        return '';
-    }
-    
-    $uniqueFileName = time() . '_' . basename($file['name']);
-    $fullPath = $uploadDirectory . $uniqueFileName;
-    
-    $isUploaded = move_uploaded_file($file['tmp_name'], $fullPath);
-    
-    if ($isUploaded) {
-        return $uniqueFileName;
-    }
-    
-    return '';
+function formatPrice($price) {
+    return number_format($price, 0, ',', '.');
 }
 
-function deleteFile($fileName, $uploadDirectory = '../uploads/') {
-    $filePath = $uploadDirectory . $fileName;
-    $fileExists = !empty($fileName) && file_exists($filePath);
-    
-    if ($fileExists) {
-        unlink($filePath);
-        return true;
-    }
-    
-    return false;
+function formatDate($date, $format = 'd M Y') {
+    return date($format, strtotime($date));
 }
 
-function sanitizeInput($connection, $input) {
-    $cleanInput = trim($input);
-    return mysqli_real_escape_string($connection, $cleanInput);
+function generateWhatsAppLink($productName, $price) {
+    $formattedPrice = formatPrice($price);
+    $message = "Halo, saya tertarik untuk membeli *{$productName}* dengan harga Rp {$formattedPrice}. Apakah masih tersedia?";
+    return "https://wa.me/" . WHATSAPP_NUMBER . "?text=" . urlencode($message);
 }
 
-function handleFileUpload($newFile, $oldFile = '', $uploadDirectory = '../uploads/') {
-    $hasNewFile = !empty($newFile['name']);
-    
-    if ($hasNewFile) {
-        if (!empty($oldFile)) {
-            deleteFile($oldFile, $uploadDirectory);
-        }
-        return uploadFile($newFile, $uploadDirectory);
+function sanitizeOutput($string) {
+    return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+}
+
+function redirectTo($url) {
+    header("Location: {$url}");
+    exit;
+}
+
+function setFlashMessage($key, $message) {
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    $_SESSION['flash'][$key] = $message;
+}
+
+function getFlashMessage($key) {
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
     }
     
-    return $oldFile;
+    if (isset($_SESSION['flash'][$key])) {
+        $message = $_SESSION['flash'][$key];
+        unset($_SESSION['flash'][$key]);
+        return $message;
+    }
+    
+    return null;
+}
+
+function hasFlashMessage($key) {
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    return isset($_SESSION['flash'][$key]);
 }
