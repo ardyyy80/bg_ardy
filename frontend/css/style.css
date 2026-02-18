@@ -289,22 +289,22 @@ body {
     
     background-color: #3A0606;
     
-    border-width: 1px;
-    border-style: solid;
-    border-color: #E0E0E0;
-    border-radius: 8px;
+    border: none;
+    border-radius: 20px;
     
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .game-card:hover {
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
 }
 
 .game-preview {
     flex: 1;
     background: #866060;
-    padding: 30px;
+    padding: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -314,92 +314,127 @@ body {
     position: relative;
     width: 100%;
     max-width: 500px;
+    transition: transform 0.5s ease;
+}
+
+.game-card:hover .image-frame {
+    transform: scale(1.02);
 }
 
 .board-image {
     width: 100%;
     height: auto;
     max-height: 500px;
-    border-radius: 6px;
+    border-radius: 12px;
     object-fit: contain;
     object-position: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .image-overlay {
     position: absolute;
-    bottom: 15px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.8);
-    padding: 6px 16px;
-    border-radius: 4px;
+    background: rgba(58, 6, 6, 0.9);
+    padding: 8px 20px;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(235, 213, 171, 0.2);
 }
 
 .overlay-badge {
-    color: #fff;
-    font-weight: 600;
-    font-size: 0.85rem;
-    letter-spacing: 0.3px;
+    color: #EBD5AB;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .game-info {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    padding: 50px;
+    justify-content: center;
+}
+
+.game-info .btn-primary {
+    width: fit-content;
+    padding: 15px 35px;
+    border-radius: 30px;
+    background: #F7CE46;
+    color: #3A0606;
+    font-weight: 700;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(247, 206, 70, 0.2);
+}
+
+.game-info .btn-primary:hover {
+    background: #EBD5AB;
+    transform: translateX(5px);
+    box-shadow: 0 6px 20px rgba(247, 206, 70, 0.4);
+}
+
+.game-info .btn-primary svg {
+    transition: transform 0.3s ease;
+}
+
+.game-info .btn-primary:hover svg {
+    transform: translateX(5px);
 }
 
 .game-header {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .game-title {
     font-family: 'Alegreya', serif;
-    font-size: 2.3rem;
+    font-size: 2.8rem;
     color: #F7CE46 !important;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
     font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: -0.5px;
+    line-height: 1.1;
 }
 
 .game-subtitle {
     font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-    color: #F5E9D0 !important;
+    font-size: 0.9rem;
+    color: #EBD5AB !important;
     font-weight: 600;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
+    opacity: 0.8;
 }
 
 .game-description {
-    font-size: 1rem;
-    color: #FFFFFF !important;
-    line-height: 1.8;
-    margin-bottom: 30px;
-    text-align: justify;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.9) !important;
+    line-height: 1.7;
+    margin-bottom: 35px;
+    text-align: left;
 }
 
 .game-specs {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-bottom: 30px;
+    gap: 20px;
+    margin-bottom: 40px;
 }
 
 .spec-item {
     display: flex;
-    align-items: flex-start;
-    padding: 20px;
-    background: #866060;
-    border-radius: 8px;
-    border-left: 3px solid #EBD5AB;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(134, 96, 96, 0.3);
+    border-radius: 12px;
+    border: 1px solid rgba(235, 213, 171, 0.1);
+    transition: all 0.3s ease;
 }
 
 .spec-item:hover {
-    background: #6b4d4d;
-    border-left-width: 4px;
+    background: rgba(134, 96, 96, 0.5);
+    border-color: rgba(235, 213, 171, 0.3);
 }
 
 .spec-content {
@@ -483,17 +518,19 @@ body {
 }
 
 .btn-primary {
-    background: #866060;
-    color: #fff;
+    background: #F7CE46;
+    color: #3A0606;
     display: inline-flex;
     align-items: center;
     gap: 10px;
     justify-content: space-between;
+    transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-    background: #6b4d4d;
-    box-shadow: 0 5px 15px rgba(134, 96, 96, 0.3);
+    background: #EBD5AB;
+    color: #3A0606;
+    box-shadow: 0 5px 15px rgba(247, 206, 70, 0.3);
 }
 
 .btn-primary svg {
