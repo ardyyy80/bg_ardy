@@ -5,7 +5,19 @@ function formatPrice($price) {
 }
 
 function formatDate($date, $format = 'd M Y') {
-    return date($format, strtotime($date));
+    $timestamp = strtotime($date);
+    if ($format === 'd M Y H:i') {
+        $months = [
+            'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun',
+            'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'
+        ];
+        $day = date('d', $timestamp);
+        $month = $months[date('n', $timestamp) - 1];
+        $year = date('Y', $timestamp);
+        $time = date('H:i', $timestamp);
+        return "{$day} {$month} {$year} {$time}";
+    }
+    return date($format, $timestamp);
 }
 
 function generateWhatsAppLink($productName, $price) {

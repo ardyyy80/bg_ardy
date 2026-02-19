@@ -23,7 +23,7 @@
         </a>
 
         <div class="mt-auto">
-            <a href="../logout.php" class="logout-btn">
+            <a href="javascript:void(0)" onclick="confirmLogout('../logout.php')" class="logout-btn">
                 <i class="fas fa-arrow-right-from-bracket menu-icon"></i> Logout
             </a>
         </div>

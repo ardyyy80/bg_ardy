@@ -10,7 +10,7 @@ $merchandiseService = new MerchandiseService($koneksi);
 $commentService = new CommentService($koneksi);
 
 $merchandiseList = $merchandiseService->getAllMerchandise();
-$recentComments = $commentService->getRecentComments();
+$recentComments = $commentService->getAllComments();
 
 $commentError = getFlashMessage('error');
 $commentSuccess = getFlashMessage('success');
@@ -24,6 +24,9 @@ $commentSuccess = getFlashMessage('success');
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div id="pageLoader" class="page-loader">
+        <div class="loader-spinner"></div>
+    </div>
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
             <div class="logo">
@@ -183,35 +186,46 @@ $commentSuccess = getFlashMessage('success');
                     </div>
                 <?php endif; ?>
                 
-                <?php if ($commentSuccess): ?>
-                    <div class="alert alert-success" style="margin-bottom: 1rem; padding: 1rem; background: #d4edda; color: #155724; border-radius: 4px;">
-                        <?= sanitizeOutput($commentSuccess) ?>
+                <div id="successModal" class="success-modal" <?= $commentSuccess ? 'style="display: flex;"' : '' ?>>
+                    <div class="success-modal-content">
+                        <div class="success-checkmark">
+                            <svg viewBox="0 0 52 52">
+                                <circle cx="26" cy="26" r="25" fill="none"/>
+                                <path fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                            </svg>
+                        </div>
+                        <h2 class="success-title">Done</h2>
+                        <button class="success-ok-btn" onclick="closeSuccessModal()">OK</button>
                     </div>
-                <?php endif; ?>
+                </div>
                 
                 <form action="../backend/submit_comment.php" method="POST" class="comment-form">
                     <div class="form-group">
                         <label for="nama_penulis">Nama</label>
                         <input type="text" id="nama_penulis" name="nama_penulis" placeholder="Masukkan nama Anda" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group textarea-group">
                         <label for="detail_komen">Komentar</label>
                         <textarea id="detail_komen" name="detail_komen" rows="5" placeholder="Bagaimana pendapat Anda tentang board game ini?" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Kirim Komentar</button>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Kirim Komentar</button>
+                    </div>
                 </form>
 
                 <div class="comments-list">
                     <h3>Komentar Terbaru</h3>
-                    <?php while ($comment = mysqli_fetch_assoc($recentComments)): ?>
-                    <div class="comment-item">
-                        <div class="comment-header">
-                            <strong><?= sanitizeOutput($comment['nama_penulis']) ?></strong>
-                            <span class="comment-date"><?= formatDate($comment['tanggal_komen']) ?></span>
+                    <div class="comments-container">
+                        <?php while ($comment = mysqli_fetch_assoc($recentComments)): ?>
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <strong><?= sanitizeOutput($comment['nama_penulis']) ?></strong>
+                                <span class="comment-date"><?= formatDate($comment['tanggal_komen'], 'd M Y H:i') ?></span>
+                            </div>
+                            <p class="comment-text"><?= nl2br(sanitizeOutput($comment['detail_komen'])) ?></p>
                         </div>
-                        <p class="comment-text"><?= nl2br(sanitizeOutput($comment['detail_komen'])) ?></p>
+                        <?php endwhile; ?>
                     </div>
-                    <?php endwhile; ?>
                 </div>
             </div>
         </div>
@@ -222,5 +236,19 @@ $commentSuccess = getFlashMessage('success');
             <p>&copy; 2026 Tapak Arwah Nusantara. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        function closeSuccessModal() {
+            document.getElementById('successModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('successModal');
+            if (event.target == modal) {
+                closeSuccessModal();
+            }
+        }
+    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>

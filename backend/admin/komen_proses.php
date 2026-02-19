@@ -11,10 +11,15 @@ if ($isDeleteRequest) {
     $query = "DELETE FROM tb_komen WHERE id_komen = ?";
     $statement = mysqli_prepare($koneksi, $query);
     mysqli_stmt_bind_param($statement, "i", $commentId);
-    mysqli_stmt_execute($statement);
+    $isDeleted = mysqli_stmt_execute($statement);
     mysqli_stmt_close($statement);
     
-    log_activity($koneksi, 'Menghapus komentar', 'Komentar');
+    if ($isDeleted) {
+        log_activity($koneksi, 'Menghapus komentar', 'Komentar');
+        $_SESSION['success_message'] = 'Komentar berhasil dihapus!';
+    } else {
+        $_SESSION['error_message'] = 'Gagal menghapus komentar!';
+    }
     
     header("Location: komen_tampil.php");
     exit;

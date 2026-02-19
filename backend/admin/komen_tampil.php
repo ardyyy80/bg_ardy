@@ -14,34 +14,52 @@ $commentList = mysqli_query($koneksi, $query);
 
 <div class="card shadow-sm">
     <div class="card-body">
-        <table class="table table-bordered table-striped table-hover mb-0">
-            <thead>
-                <tr>
-                    <th width="50">No</th>
-                    <th>Nama Penulis</th>
-                    <th>Komentar</th>
-                    <th width="140">Tanggal</th>
-                    <th width="120">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php 
-            $rowNumber = 1;
-            while ($comment = mysqli_fetch_assoc($commentList)):
-            ?>
-                <tr>
-                    <td><?= $rowNumber++ ?></td>
-                    <td><?= htmlspecialchars($comment['nama_penulis']) ?></td>
-                    <td><?= htmlspecialchars($comment['detail_komen']) ?></td>
-                    <td><?= htmlspecialchars($comment['tanggal_komen']) ?></td>
-                    <td>
-                        <a href="komen_proses.php?hapus=<?= $comment['id_komen'] ?>" class="btn btn-danger btn-sm">Hapus</a>
-                    </td>
-                </tr>
-            <?php endwhile; ?>
-            </tbody>
-        </table>
+        <div class="table-responsive" style="max-height: 600px; overflow-y: auto;">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Penulis</th>
+                        <th>Komentar</th>
+                        <th>Tanggal</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php 
+                $rowNumber = 1;
+                while ($comment = mysqli_fetch_assoc($commentList)):
+                ?>
+                    <tr>
+                        <td><?= $rowNumber++ ?></td>
+                        <td><?= htmlspecialchars($comment['nama_penulis']) ?></td>
+                        <td><?= htmlspecialchars($comment['detail_komen']) ?></td>
+                        <td><?= htmlspecialchars($comment['tanggal_komen']) ?></td>
+                        <td>
+                            <button 
+                                onclick="confirmDelete('komen_proses.php?hapus=<?= $comment['id_komen'] ?>', 'komentar ini')" 
+                                class="btn btn-danger btn-sm">
+                                Hapus
+                            </button>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
+
+<script>
+<?php if (isset($_SESSION['success_message'])): ?>
+    showSuccessNotification('<?= $_SESSION['success_message'] ?>');
+    <?php unset($_SESSION['success_message']); ?>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['error_message'])): ?>
+    showErrorNotification('<?= $_SESSION['error_message'] ?>');
+    <?php unset($_SESSION['error_message']); ?>
+<?php endif; ?>
+</script>
 
 <?php include 'layout/footer.php'; ?>

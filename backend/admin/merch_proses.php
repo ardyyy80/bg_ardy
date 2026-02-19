@@ -24,11 +24,17 @@ if ($isDeleteRequest) {
         
         $deleteQuery = "DELETE FROM tb_merch WHERE id_merch = ?";
         $deleteStatement = mysqli_prepare($koneksi, $deleteQuery);
-        mysqli_stmt_bind_param($deleteStatement, "i", $merchandiseId);
-        mysqli_stmt_execute($deleteStatement);
+        $isDeleted = mysqli_stmt_execute($deleteStatement);
         mysqli_stmt_close($deleteStatement);
         
-        log_activity($koneksi, 'Menghapus merchandise', 'Merch');
+        if ($isDeleted) {
+            log_activity($koneksi, 'Menghapus merchandise', 'Merch');
+            $_SESSION['success_message'] = 'Merchandise berhasil dihapus!';
+        } else {
+            $_SESSION['error_message'] = 'Gagal menghapus merchandise!';
+        }
+    } else {
+        $_SESSION['error_message'] = 'Merchandise tidak ditemukan!';
     }
     
     header("Location: merch_tampil.php");
@@ -50,18 +56,28 @@ if ($isUpdate) {
     $updateQuery = "UPDATE tb_merch SET judul_merch = ?, foto_merch = ?, harga_merch = ?, stock_merch = ?, detail_merch = ? WHERE id_merch = ?";
     $statement = mysqli_prepare($koneksi, $updateQuery);
     mysqli_stmt_bind_param($statement, "ssdisi", $title, $newPhotoName, $price, $stock, $description, $merchandiseId);
-    mysqli_stmt_execute($statement);
+    $isSuccess = mysqli_stmt_execute($statement);
     mysqli_stmt_close($statement);
     
-    log_activity($koneksi, "Mengupdate merchandise: $title", 'Merch');
+    if ($isSuccess) {
+        log_activity($koneksi, "Mengupdate merchandise: $title", 'Merch');
+        $_SESSION['success_message'] = 'Merchandise berhasil diupdate!';
+    } else {
+        $_SESSION['error_message'] = 'Gagal mengupdate merchandise!';
+    }
 } else {
     $insertQuery = "INSERT INTO tb_merch (judul_merch, foto_merch, harga_merch, stock_merch, detail_merch) VALUES (?, ?, ?, ?, ?)";
     $statement = mysqli_prepare($koneksi, $insertQuery);
     mysqli_stmt_bind_param($statement, "ssdis", $title, $newPhotoName, $price, $stock, $description);
-    mysqli_stmt_execute($statement);
+    $isSuccess = mysqli_stmt_execute($statement);
     mysqli_stmt_close($statement);
     
-    log_activity($koneksi, "Menambah merchandise: $title", 'Merch');
+    if ($isSuccess) {
+        log_activity($koneksi, "Menambah merchandise: $title", 'Merch');
+        $_SESSION['success_message'] = 'Merchandise berhasil ditambahkan!';
+    } else {
+        $_SESSION['error_message'] = 'Gagal menambahkan merchandise!';
+    }
 }
 
 header("Location: merch_tampil.php");

@@ -47,7 +47,11 @@ $merchandiseList = mysqli_query($koneksi, $query);
                     <td><?= number_format($merchandise['stock_merch'], 0, ',', '.') ?></td>
                     <td>
                         <a href="merch_input.php?id=<?= $merchandise['id_merch'] ?>" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="merch_proses.php?hapus=<?= $merchandise['id_merch'] ?>" class="btn btn-danger btn-sm">Hapus</a>
+                        <button 
+                            onclick="confirmDelete('merch_proses.php?hapus=<?= $merchandise['id_merch'] ?>', 'merchandise <?= htmlspecialchars($merchandise['judul_merch']) ?>')" 
+                            class="btn btn-danger btn-sm">
+                            Hapus
+                        </button>
                     </td>
                 </tr>
             <?php endwhile; ?>
@@ -55,5 +59,17 @@ $merchandiseList = mysqli_query($koneksi, $query);
         </table>
     </div>
 </div>
+
+<script>
+<?php if (isset($_SESSION['success_message'])): ?>
+    showSuccessNotification('<?= $_SESSION['success_message'] ?>');
+    <?php unset($_SESSION['success_message']); ?>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['error_message'])): ?>
+    showErrorNotification('<?= $_SESSION['error_message'] ?>');
+    <?php unset($_SESSION['error_message']); ?>
+<?php endif; ?>
+</script>
 
 <?php include 'layout/footer.php'; ?>
