@@ -16,7 +16,7 @@ $commentQuery = "SELECT COUNT(*) as total FROM tb_komen";
 $commentResult = mysqli_query($koneksi, $commentQuery);
 $totalComments = mysqli_fetch_assoc($commentResult)['total'];
 
-$activityQuery = "SELECT * FROM tb_activity_log ORDER BY created_at DESC LIMIT 10";
+$activityQuery = "SELECT * FROM tb_activity_log ORDER BY created_at DESC";
 $activityList = mysqli_query($koneksi, $activityQuery);
 $hasActivities = mysqli_num_rows($activityList) > 0;
 ?>
