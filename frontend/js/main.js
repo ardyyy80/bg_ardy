@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollSpy();
     initScrollAnimations();
     initFormValidation();
+    initNavbarScroll();
     hideLoader();
 });
 
@@ -55,6 +56,18 @@ function initScrollSpy() {
     });
 }
 
+function initNavbarScroll() {
+    const navbar = document.querySelector('.navbar');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+}
+
 function initScrollAnimations() {
     const animateElements = document.querySelectorAll('.hero-content, .section-title, .profile-card, .game-card, .merch-card, .comment-form, .comment-item');
     
@@ -86,34 +99,54 @@ function initFormValidation() {
     const nameInput = form.querySelector('#nama_penulis');
     const commentInput = form.querySelector('#detail_komen');
     
-    nameInput.addEventListener('blur', function() {
-        validateInput(this, 'Nama harus diisi');
-    });
+    if (nameInput) {
+        nameInput.dataset.originalPlaceholder = nameInput.placeholder;
+        
+        nameInput.addEventListener('blur', function() {
+            validateInput(this, 'Nama harus diisi');
+        });
+        
+        nameInput.addEventListener('focus', function() {
+            if (this.classList.contains('error')) {
+                restorePlaceholder(this);
+            }
+        });
+        
+        nameInput.addEventListener('input', function() {
+            if (this.value.trim().length > 0) {
+                clearError(this);
+            }
+        });
+    }
     
-    nameInput.addEventListener('input', function() {
-        if (this.value.trim().length > 0) {
-            clearError(this);
-        }
-    });
-    
-    commentInput.addEventListener('blur', function() {
-        validateInput(this, 'Komentar harus diisi');
-    });
-    
-    commentInput.addEventListener('input', function() {
-        if (this.value.trim().length > 0) {
-            clearError(this);
-        }
-    });
+    if (commentInput) {
+        commentInput.dataset.originalPlaceholder = commentInput.placeholder;
+        
+        commentInput.addEventListener('blur', function() {
+            validateInput(this, 'Komentar harus diisi');
+        });
+        
+        commentInput.addEventListener('focus', function() {
+            if (this.classList.contains('error')) {
+                restorePlaceholder(this);
+            }
+        });
+        
+        commentInput.addEventListener('input', function() {
+            if (this.value.trim().length > 0) {
+                clearError(this);
+            }
+        });
+    }
     
     form.addEventListener('submit', function(e) {
         let isValid = true;
         
-        if (!validateInput(nameInput, 'Nama harus diisi')) {
+        if (nameInput && !validateInput(nameInput, 'Nama harus diisi')) {
             isValid = false;
         }
         
-        if (!validateInput(commentInput, 'Komentar harus diisi')) {
+        if (commentInput && !validateInput(commentInput, 'Komentar harus diisi')) {
             isValid = false;
         }
         
@@ -139,27 +172,18 @@ function validateInput(input, errorMessage) {
 }
 
 function showError(input, message) {
-    const formGroup = input.closest('.form-group');
-    
-    clearError(input);
-    
     input.classList.add('error');
-    
-    const errorElement = document.createElement('span');
-    errorElement.className = 'error-message';
-    errorElement.textContent = message;
-    
-    formGroup.appendChild(errorElement);
+    input.placeholder = message;
 }
 
 function clearError(input) {
-    const formGroup = input.closest('.form-group');
-    const errorMessage = formGroup.querySelector('.error-message');
-    
     input.classList.remove('error');
-    
-    if (errorMessage) {
-        errorMessage.remove();
+    restorePlaceholder(input);
+}
+
+function restorePlaceholder(input) {
+    if (input.dataset.originalPlaceholder) {
+        input.placeholder = input.dataset.originalPlaceholder;
     }
 }
 

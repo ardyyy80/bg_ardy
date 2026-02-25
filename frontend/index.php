@@ -181,7 +181,7 @@ $commentSuccess = getFlashMessage('success');
             <h2 class="section-title">Comment</h2>
             <div class="comment-wrapper">
                 <?php if ($commentError): ?>
-                    <div class="alert alert-danger" style="margin-bottom: 1rem; padding: 1rem; background: #f8d7da; color: #721c24; border-radius: 4px;">
+                    <div class="alert alert-danger" style="margin-bottom: 1rem; padding: 1.2rem 1.5rem; background: rgba(139, 69, 69, 0.15); color: #6A3535; border-radius: 12px; border: 2px solid #8B4545;">
                         <?= sanitizeOutput($commentError) ?>
                     </div>
                 <?php endif; ?>
