@@ -19,7 +19,12 @@ if (!is_array($text)) {
             <div class="logo">
                 <img src="assets/logonavbar.png" alt="Logo Tapak Arwah Nusantara">
             </div>
-            <ul class="nav-menu">
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="index.php#home">Home</a></li>
                 <li><a href="index.php#about">About</a></li>
                 <li><a href="index.php#game" class="active">Game</a></li>
@@ -161,5 +166,7 @@ if (!is_array($text)) {
             <p>&copy; 2026 Tapak Arwah Nusantara. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

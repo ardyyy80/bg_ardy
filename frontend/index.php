@@ -32,7 +32,12 @@ $commentSuccess = getFlashMessage('success');
             <div class="logo">
                 <img src="assets/logonavbar.png" alt="Logo Tapak Arwah Nusantara">
             </div>
-            <ul class="nav-menu">
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#game">Game</a></li>
@@ -47,8 +52,7 @@ $commentSuccess = getFlashMessage('success');
             <img src="assets/logoutama.png" alt="Logo Tapak Arwah Nusantara" class="hero-logo">
             <h1 class="hero-title">Tapak Arwah Nusantara</h1>
             <p class="hero-description">
-                Langkahkan takdirmu, Hadapi arwah.<br>
-                Rebut takhta Nusantara.
+                Langkah kecil menentukan nasib besar.
             </p>
         </div>
     </section>
@@ -92,36 +96,36 @@ $commentSuccess = getFlashMessage('success');
                     <div class="game-info">
                         <div class="game-header">
                             <h3 class="game-title">Tapak Arwah Nusantara</h3>
-                            <span class="game-subtitle">Board Game Premium</span>
+                            <span class="game-subtitle">Board Game</span>
                         </div>
                         <p class="game-description">
-                            Board game strategi untuk 2-4 pemain yang membawa Anda menjelajahi dunia mistis Nusantara. 
-                            Setiap pemain berperan sebagai pemburu arwah yang harus mengumpulkan artefak mistis sambil 
-                            menghindari kutukan dan makhluk supernatural.
+                            Permainan papan bertema mistis Nusantara untuk 2 pemain yang menghadirkan pertarungan antara Hantu dan Manusia. 
+                            Dalam permainan ini, kedua pemain berlomba mencapai Finish sambil mempertahankan nyawa, memanfaatkan kartu Buff dan Debuff, 
+                            serta menghadapi berbagai efek petak di papan permainan.
                         </p>
                         <div class="game-specs">
                             <div class="spec-item">
                                 <div class="spec-content">
                                     <span class="spec-label">Pemain</span>
-                                    <span class="spec-value">2-4 Orang</span>
+                                    <span class="spec-value">2 Orang</span>
                                 </div>
                             </div>
                             <div class="spec-item">
                                 <div class="spec-content">
-                                    <span class="spec-label">Durasi</span>
-                                    <span class="spec-value">45-90 Menit</span>
+                                    <span class="spec-label">Durasi Permainan</span>
+                                    <span class="spec-value">± 20–30 Menit</span>
                                 </div>
                             </div>
                             <div class="spec-item">
                                 <div class="spec-content">
                                     <span class="spec-label">Tema</span>
-                                    <span class="spec-value">Supernatural Indonesia</span>
+                                    <span class="spec-value">Mistis Nusantara</span>
                                 </div>
                             </div>
                             <div class="spec-item">
                                 <div class="spec-content">
                                     <span class="spec-label">Genre</span>
-                                    <span class="spec-value">Strategi & Petualangan</span>
+                                    <span class="spec-value">Strategi dan Kompetitif</span>
                                 </div>
                             </div>
                         </div>
@@ -237,18 +241,6 @@ $commentSuccess = getFlashMessage('success');
         </div>
     </footer>
 
-    <script>
-        function closeSuccessModal() {
-            document.getElementById('successModal').style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('successModal');
-            if (event.target == modal) {
-                closeSuccessModal();
-            }
-        }
-    </script>
     <script src="js/main.js"></script>
 </body>
 </html>

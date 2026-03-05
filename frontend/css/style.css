@@ -6,14 +6,22 @@
     box-sizing: border-box;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 .page-loader {
@@ -186,6 +194,69 @@ html {
     background: linear-gradient(90deg, transparent, #EBD5AB, transparent);
 }
 
+/* ============================================
+   HAMBURGER BUTTON
+   ============================================ */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1100;
+    flex-shrink: 0;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #EBD5AB;
+    border-radius: 2px;
+    transition: all 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+.hamburger.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Nav Overlay (injected via JS) */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 990;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.38s ease;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.nav-overlay.visible {
+    display: block;
+}
+
+.nav-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 .hero-section {
     background: linear-gradient(135deg, #EBD5AB 0%, #D4C09A 100%);
     padding-top: 100px;
@@ -201,6 +272,7 @@ html {
 
 .hero-logo {
     width: 555px;
+    max-width: 90%;
     height: auto;
     margin-bottom: 50px;
 }
@@ -780,6 +852,7 @@ html {
 .merch-image {
     width: 125%;
     height: 110%;
+    max-width: none;
     object-fit: contain;
     border-radius: 8px;
 }
@@ -1746,154 +1819,517 @@ html {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 20px;
     }
-    
-    .profile-card,
+
     .game-card {
         flex-direction: column;
     }
-    
+
     .game-specs {
         grid-template-columns: 1fr;
     }
-    
+
     .game-title {
         font-size: 2rem;
     }
-    
+
     .game-info {
         padding: 30px;
     }
-    
-    .profile-image img {
-        width: 150px;
-        height: 150px;
-    }
-    
+
     .hero-title {
         font-size: 2.5rem;
     }
-    
+
     .nav-menu {
         gap: 15px;
+    }
+
+    /* Profile card — reset semua hardcoded margin */
+    .profile-card {
+        flex-direction: column;
+        align-items: center;
+        max-height: none;
+        padding: 35px 30px;
+        gap: 25px;
+    }
+
+    .profile-image {
+        margin: 0 auto;
+        position: static;
+    }
+
+    .profile-image img {
+        width: 160px;
+        height: 200px;
+        margin: 0;
+    }
+
+    .profile-info {
+        margin-left: 0;
+        align-items: center;
+        width: 100%;
+    }
+
+    .profile-info h3 {
+        margin-left: 0;
+        font-size: 2.2rem;
+        text-align: center;
+    }
+
+    .profile-quote {
+        text-align: center;
+        border-right: none;
+        border-left: 4px solid #3A0606;
+        margin: 0;
+    }
+
+    .quote-text {
+        padding-left: 15px;
+        text-align: center;
+    }
+
+    .quote-title {
+        text-align: center;
+    }
+
+    .profile-desc {
+        margin-left: 0;
+        text-align: center;
     }
 }
 
 @media (max-width: 768px) {
-    .merch-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
+    /* ---- Mobile Nav ---- */
+    .hamburger {
+        display: flex;
     }
-    
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: min(300px, 82vw);
+        height: 100dvh;
+        background: linear-gradient(160deg, #1e0303 0%, #3A0606 45%, #4d0808 100%);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        transform: translateX(100%);
+        transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        box-shadow: -12px 0 50px rgba(0, 0, 0, 0.6);
+        padding: 80px 0 40px;
+        flex-wrap: nowrap;
+        overflow-y: auto;
+        border-left: 1px solid rgba(235, 213, 171, 0.12);
+    }
+
+    .nav-menu.open {
+        transform: translateX(0);
+    }
+
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        transform: translateX(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-menu.open li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .nav-menu.open li:nth-child(1) { transition-delay: 0.08s; }
+    .nav-menu.open li:nth-child(2) { transition-delay: 0.14s; }
+    .nav-menu.open li:nth-child(3) { transition-delay: 0.20s; }
+    .nav-menu.open li:nth-child(4) { transition-delay: 0.26s; }
+    .nav-menu.open li:nth-child(5) { transition-delay: 0.32s; }
+
+    .nav-menu a {
+        display: block;
+        padding: 17px 40px;
+        font-size: 1rem;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        border-bottom: none;
+        transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    .nav-menu a::after {
+        display: none;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+        color: #F7CE46;
+        background: rgba(235, 213, 171, 0.07);
+    }
+
+    .nav-menu li + li {
+        border-top: 1px solid rgba(235, 213, 171, 0.08);
+    }
+
+    /* ---- Merchandise ---- */
+    .merch-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 20px;
+        max-width: 100%;
+    }
+
     .merch-header {
         padding: 15px;
     }
-    
+
     .merch-title {
         font-size: 1.2rem;
     }
-    
+
     .merch-desc {
         font-size: 0.8rem;
     }
-    
+
     .merch-image-wrapper {
         height: 180px;
         padding: 10px;
     }
-    
+
     .merch-price {
         font-size: 1.5rem;
     }
-    
+
     .merch-body {
         padding: 15px;
     }
-    
+
     .merch-body .btn {
         padding: 10px 15px;
         font-size: 0.9rem;
     }
-    
-    .nav-menu {
-        flex-wrap: wrap;
-        gap: 10px;
-        font-size: 0.9rem;
+
+    /* ---- Hero ---- */
+    .hero-logo {
+        width: 340px;
     }
-    
+
     .hero-title {
         font-size: 2rem;
     }
-    
+
     .hero-description {
         font-size: 1rem;
     }
-    
+
+    .hero-section {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+
+    /* ---- Sections ---- */
     .section-title {
         font-size: 2rem;
     }
-    
+
     .page-title {
         font-size: 2rem;
     }
-    
+
+    /* ---- Game ---- */
     .game-title {
         font-size: 1.8rem;
     }
-    
+
     .game-subtitle {
         font-size: 0.9rem;
     }
-    
+
     .game-info {
-        padding: 30px;
+        padding: 25px;
     }
-    
+
     .game-preview {
         padding: 20px;
     }
-    
+
+    /* ---- Comment Form — stack label + input ---- */
+    .comment-form {
+        padding: 30px 22px;
+    }
+
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .form-group label {
+        min-width: auto;
+        font-size: 1rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+    }
+
+    .form-group.textarea-group label {
+        padding-top: 0;
+    }
+
+    .form-actions {
+        justify-content: center;
+    }
+
+    .comment-form .btn-primary {
+        width: 100%;
+        padding: 15px 30px;
+    }
+
+    /* ---- Detail Game ---- */
     .game-detail-content {
-        padding: 30px;
+        padding: 22px;
     }
-    
+
     .detail-section {
-        padding: 20px;
+        padding: 22px;
     }
-    
+
     .detail-section h2 {
         font-size: 1.5rem;
     }
-    
+
     .board-preview-card {
         padding: 20px;
     }
-    
+
     .board-preview-image {
         max-height: 400px;
     }
-    
+
     .components-grid {
-        gap: 20px;
-        padding: 15px;
+        gap: 15px;
+        padding: 15px 12px;
     }
-    
+
     .component-card {
-        min-width: 180px;
-        max-width: 180px;
-        padding: 20px;
+        min-width: 165px;
+        max-width: 165px;
+        padding: 18px 14px;
     }
-    
+
     .component-image {
-        height: 130px;
+        height: 120px;
     }
-    
+
     .component-card h3 {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
-    
+
     .component-card p {
         font-size: 0.8rem;
         line-height: 1.5;
+    }
+}
+
+/* ============================================
+   EXTRA SMALL SCREENS (≤ 480px)
+   ============================================ */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .navbar {
+        padding: 12px 0;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    .hero-logo {
+        width: 260px;
+    }
+
+    .hero-title {
+        font-size: 1.7rem;
+        letter-spacing: 0.5px;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+    }
+
+    .hero-section {
+        padding-top: 55px;
+        padding-bottom: 55px;
+    }
+
+    .about-section,
+    .game-section,
+    .merchandise-section,
+    .comment-section {
+        padding: 55px 0;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+        margin-bottom: 35px;
+    }
+
+    /* Profile card compact */
+    .profile-card {
+        padding: 25px 18px;
+        border-radius: 15px;
+    }
+
+    .profile-image img {
+        width: 130px;
+        height: 160px;
+    }
+
+    .profile-info h3 {
+        font-size: 1.8rem;
+    }
+
+    .quote-title {
+        font-size: 1.4rem;
+    }
+
+    .quote-text {
+        font-size: 1.2rem;
+    }
+
+    /* Game card */
+    .game-title {
+        font-size: 1.6rem;
+    }
+
+    .game-info {
+        padding: 20px 16px;
+    }
+
+    .game-preview {
+        padding: 16px;
+    }
+
+    .game-specs {
+        gap: 12px;
+    }
+
+    .spec-item {
+        padding: 12px 14px;
+    }
+
+    /* Merch */
+    .merch-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .merch-price {
+        font-size: 1.4rem;
+    }
+
+    /* Comment */
+    .comment-form {
+        padding: 22px 16px;
+        border-radius: 15px;
+    }
+
+    .comment-item {
+        padding: 22px 18px;
+    }
+
+    .comment-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .comment-header strong {
+        font-size: 1.1rem;
+    }
+
+    /* Detail game */
+    .page-title {
+        font-size: 1.6rem;
+        margin-bottom: 35px;
+    }
+
+    .game-detail-content {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .detail-section {
+        padding: 18px 14px;
+        margin-bottom: 22px;
+        border-radius: 10px;
+    }
+
+    .detail-section h2 {
+        font-size: 1.3rem;
+    }
+
+    .detail-section h3 {
+        font-size: 1.2rem;
+    }
+
+    .detail-section p,
+    .detail-section ol > li,
+    .detail-section ul:not(.location-list):not(.tips-list) > li,
+    .location-list li,
+    .tips-list li,
+    .elegant-list li {
+        font-size: 0.95rem;
+    }
+
+    .elegant-list li,
+    .detail-section ol > li {
+        padding: 14px 14px 14px 50px;
+    }
+
+    .elegant-list li::before,
+    .detail-section ol > li::before {
+        font-size: 1.3rem;
+        left: 14px;
+        top: 16px;
+    }
+
+    .component-card {
+        min-width: 150px;
+        max-width: 150px;
+        padding: 14px 12px;
+    }
+
+    .component-image {
+        height: 105px;
+    }
+
+    .board-preview-image {
+        max-height: 280px;
+    }
+
+    .board-preview-card {
+        padding: 14px;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 28px 0;
+    }
+
+    .footer p {
+        font-size: 0.85rem;
+    }
+
+    /* Success modal */
+    .success-modal-content {
+        min-width: 280px;
+        padding: 35px 25px;
     }
 }
 
@@ -1916,7 +2352,8 @@ html {
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-    min-width: 320px;
+    min-width: min(320px, 90vw);
+    width: min(320px, 90vw);
     animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 3px solid rgba(58, 6, 6, 0.2);
 }
