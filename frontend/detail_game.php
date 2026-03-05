@@ -61,27 +61,10 @@ if (!is_array($text)) {
                     <h2><?= $text['persiapan']['title'] ?></h2>
                     <ol class="elegant-list">
                         <?php foreach($text['persiapan']['items'] as $item): ?>
-                        <li><?= $item ?></li>
-                        <?php endforeach; ?>
-                    </ol>
-                </div>
-
-                <div class="detail-section goal-section">
-                    <h2><?= $text['tujuan']['title'] ?></h2>
-                    <div class="goal-content">
-                        <p><?= $text['tujuan']['content'] ?></p>
-                    </div>
-                </div>
-
-                <div class="detail-section">
-                    <h2><?= $text['giliran']['title'] ?></h2>
-                    <p><?= $text['giliran']['intro'] ?></p>
-                    <ol>
-                        <?php foreach($text['giliran']['phases'] as $phase): ?>
-                        <li><strong><?= $phase['name'] ?></strong> <?= $phase['desc'] ?>
-                            <?php if(isset($phase['sub_items'])): ?>
+                        <li><?= $item['text'] ?>
+                            <?php if(isset($item['sub_items'])): ?>
                             <ul>
-                                <?php foreach($phase['sub_items'] as $sub): ?>
+                                <?php foreach($item['sub_items'] as $sub): ?>
                                 <li><?= $sub ?></li>
                                 <?php endforeach; ?>
                             </ul>
@@ -92,65 +75,76 @@ if (!is_array($text)) {
                 </div>
 
                 <div class="detail-section">
-                    <h2><?= $text['lokasi']['title'] ?></h2>
+                    <h2><?= $text['menentukan_giliran']['title'] ?></h2>
+                    <p><?= $text['menentukan_giliran']['intro'] ?></p>
+                    <ol>
+                        <?php foreach($text['menentukan_giliran']['items'] as $item): ?>
+                        <li><?= $item ?></li>
+                        <?php endforeach; ?>
+                    </ol>
+                </div>
+
+                <div class="detail-section">
+                    <h2><?= $text['giliran']['title'] ?></h2>
+                    <p><?= $text['giliran']['intro'] ?></p>
+                    <ol>
+                        <?php foreach($text['giliran']['phases'] as $phase): ?>
+                        <li><strong><?= $phase['name'] ?></strong> <?= $phase['desc'] ?></li>
+                        <?php endforeach; ?>
+                    </ol>
+                    <p><?= $text['giliran']['outro'] ?></p>
+                </div>
+
+                <div class="detail-section">
+                    <h2><?= $text['petak']['title'] ?></h2>
                     <ul class="location-list">
-                        <?php foreach($text['lokasi']['items'] as $lokasi): ?>
-                        <li><strong><?= $lokasi['name'] ?></strong> <?= $lokasi['desc'] ?></li>
+                        <?php foreach($text['petak']['items'] as $petak): ?>
+                        <li>
+                            <strong><?= $petak['name'] ?></strong>
+                            <?php if(isset($petak['desc'])): ?>
+                            — <?= $petak['desc'] ?>
+                            <?php endif; ?>
+                            <?php if(isset($petak['sub_items'])): ?>
+                            <ul>
+                                <?php foreach($petak['sub_items'] as $sub): ?>
+                                <li><?= $sub ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <?php endif; ?>
+                        </li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
 
                 <div class="detail-section">
-                    <h2><?= $text['kartu']['title'] ?></h2>
-                    <h3><?= $text['kartu']['artefak']['subtitle'] ?></h3>
-                    <p><?= $text['kartu']['artefak']['desc'] ?></p>
-                    
-                    <h3><?= $text['kartu']['kejadian']['subtitle'] ?></h3>
-                    <p><?= $text['kartu']['kejadian']['desc'] ?></p>
+                    <h2><?= $text['serangan']['title'] ?></h2>
+                    <p><?= $text['serangan']['intro'] ?></p>
+                    <?php foreach($text['serangan']['zones'] as $zone): ?>
+                    <h3><?= $zone['name'] ?></h3>
                     <ul>
-                        <?php foreach($text['kartu']['kejadian']['items'] as $item): ?>
-                        <li><strong><?= $item['name'] ?></strong> <?= $item['desc'] ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-
-                    <h3><?= $text['kartu']['aksi']['subtitle'] ?></h3>
-                    <p><?= $text['kartu']['aksi']['desc'] ?></p>
-                    <ul>
-                        <?php foreach($text['kartu']['aksi']['items'] as $item): ?>
+                        <?php foreach($zone['items'] as $item): ?>
                         <li><?= $item ?></li>
                         <?php endforeach; ?>
                     </ul>
+                    <?php endforeach; ?>
+                    <p><?= $text['serangan']['outro'] ?></p>
                 </div>
 
                 <div class="detail-section win-section">
-                    <h2><?= $text['menang']['title'] ?></h2>
-                    <div class="win-content">
-                        <p><?= $text['menang']['content'] ?></p>
-                    </div>
-                </div>
-
-                <div class="detail-section lose-section">
-                    <h2><?= $text['kalah']['title'] ?></h2>
-                    <div class="lose-content">
-                        <p><?= $text['kalah']['content'] ?></p>
-                    </div>
-                </div>
-
-                <div class="detail-section tips-section">
-                    <h2><?= $text['tips']['title'] ?></h2>
-                    <ul class="tips-list">
-                        <?php foreach($text['tips']['items'] as $tip): ?>
-                        <li><?= $tip ?></li>
+                    <h2><?= $text['kondisi']['title'] ?></h2>
+                    <?php foreach($text['kondisi']['roles'] as $role): ?>
+                    <h3><?= $role['name'] ?></h3>
+                    <ul>
+                        <?php foreach($role['items'] as $item): ?>
+                        <li><?= $item ?></li>
                         <?php endforeach; ?>
                     </ul>
+                    <?php endforeach; ?>
                 </div>
 
-                <div class="detail-section variant-section">
-                    <h2><?= $text['variasi']['title'] ?></h2>
-                    <?php foreach($text['variasi']['modes'] as $mode): ?>
-                    <h3><?= $mode['name'] ?></h3>
-                    <p><?= $mode['desc'] ?></p>
-                    <?php endforeach; ?>
+                <div class="detail-section">
+                    <h2><?= $text['akhir']['title'] ?></h2>
+                    <p><?= $text['akhir']['content'] ?></p>
                 </div>
 
                 <div class="back-button-container">

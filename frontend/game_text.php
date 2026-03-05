@@ -26,113 +26,145 @@ return [
     'persiapan' => [
         'title' => 'Persiapan Permainan',
         'items' => [
-            'Letakkan papan permainan di tengah meja',
-            'Setiap pemain memilih karakter pemburu arwah dan mengambil pawn sesuai warna',
-            'Kocok deck kartu artefak dan letakkan menghadap ke bawah',
-            'Kocok deck kartu kejadian dan letakkan di tempatnya',
-            'Setiap pemain mendapat 3 kartu awal dan nyawa sebanyak 5 poin',
-            'Tentukan pemain pertama dengan melempar dadu tertinggi'
-        ]
-    ],
-    
-    'tujuan' => [
-        'title' => 'Tujuan Permainan',
-        'content' => 'Menjadi pemain pertama yang mengumpulkan 5 artefak mistis dari berbagai daerah di Nusantara sambil mempertahankan nyawa Anda dari serangan makhluk supernatural.'
-    ],
-    
-    'giliran' => [
-        'title' => 'Giliran Pemain',
-        'intro' => 'Setiap giliran pemain terdiri dari fase-fase berikut:',
-        'phases' => [
-            ['name' => 'Fase Pergerakan:', 'desc' => 'Lempar dadu dan gerakkan pawn sesuai angka yang keluar'],
+            ['text' => 'Letakkan papan permainan di tengah meja.'],
+            ['text' => 'Permainan dimainkan oleh 2 pemain, yaitu Hantu dan Manusia.'],
             [
-                'name' => 'Fase Aksi:', 
-                'desc' => 'Lakukan salah satu aksi berikut:',
+                'text' => 'Setiap pemain:',
                 'sub_items' => [
-                    'Ambil kartu artefak jika berada di lokasi artefak',
-                    'Gunakan kartu khusus dari tangan Anda',
-                    'Beristirahat untuk memulihkan 1 poin nyawa'
+                    'Memilih pion sesuai perannya.',
+                    'Memulai permainan dari petak Start.',
+                    'Memiliki 3 poin nyawa.',
                 ]
             ],
-            ['name' => 'Fase Kejadian:', 'desc' => 'Ambil 1 kartu kejadian dan ikuti instruksinya'],
-            ['name' => 'Fase Akhir:', 'desc' => 'Giliran berakhir, pemain berikutnya memulai giliran']
+            ['text' => 'Siapkan deck kartu Buff dan Debuff, lalu kocok dan letakkan menghadap ke bawah di tempat yang telah ditentukan pada papan permainan.'],
         ]
     ],
-    
-    'lokasi' => [
-        'title' => 'Jenis Lokasi di Papan',
+
+    'menentukan_giliran' => [
+        'title' => 'Menentukan Giliran',
+        'intro' => 'Untuk menentukan pemain pertama:',
         'items' => [
-            ['name' => 'Candi:', 'desc' => 'Lokasi artefak Jawa'],
-            ['name' => 'Hutan:', 'desc' => 'Lokasi artefak Kalimantan'],
-            ['name' => 'Gunung:', 'desc' => 'Lokasi artefak Sumatra'],
-            ['name' => 'Pulau:', 'desc' => 'Lokasi artefak Sulawesi'],
-            ['name' => 'Rumah Adat:', 'desc' => 'Lokasi pemulihan nyawa'],
-            ['name' => 'Zona Gelap:', 'desc' => 'Area berbahaya, ambil 2 kartu kejadian']
+            'Kedua pemain melempar dadu sebanyak 2 kali.',
+            'Jumlahkan hasil kedua lemparan.',
+            'Pemain dengan total angka terbesar mendapat giliran pertama.',
+            'Jika hasilnya sama, kedua pemain mengulang lemparan hingga ada pemenang.',
         ]
     ],
-    
-    'kartu' => [
-        'title' => 'Kartu dalam Permainan',
-        'artefak' => [
-            'subtitle' => 'Kartu Artefak',
-            'desc' => 'Kartu yang harus dikumpulkan untuk memenangkan permainan. Setiap daerah memiliki artefak unik dengan kekuatan khusus.'
+
+    'giliran' => [
+        'title' => 'Giliran Pemain',
+        'intro' => 'Dalam 1 giliran, pemain melakukan 3 langkah berikut:',
+        'phases' => [
+            ['name' => 'Fase Lempar Dadu:', 'desc' => 'Lempar dadu untuk menentukan jumlah langkah.'],
+            ['name' => 'Fase Pergerakan:', 'desc' => 'Gerakkan pion sesuai angka yang muncul pada dadu.'],
+            ['name' => 'Fase Efek Petak:', 'desc' => 'Jalankan efek dari petak tempat pion berhenti.'],
         ],
-        'kejadian' => [
-            'subtitle' => 'Kartu Kejadian',
-            'desc' => 'Kartu yang berisi berbagai peristiwa supernatural:',
-            'items' => [
-                ['name' => 'Serangan Hantu:', 'desc' => 'Kurangi nyawa pemain'],
-                ['name' => 'Berkat Leluhur:', 'desc' => 'Tambah nyawa atau kartu bonus'],
-                ['name' => 'Kutukan:', 'desc' => 'Lewati giliran atau kehilangan artefak'],
-                ['name' => 'Pertolongan:', 'desc' => 'Dapatkan keuntungan khusus']
-            ]
-        ],
-        'aksi' => [
-            'subtitle' => 'Kartu Aksi Khusus',
-            'desc' => 'Kartu yang dapat digunakan kapan saja untuk melindungi diri atau menyerang lawan:',
-            'items' => [
-                'Jimat Pelindung - Blokir 1 serangan',
-                'Mantra Pengusir - Hindari kartu kejadian negatif',
-                'Sesaji - Pulihkan 2 poin nyawa',
-                'Santet - Kurangi 1 nyawa lawan'
-            ]
-        ]
+        'outro' => 'Setelah semua langkah selesai, giliran berpindah ke pemain berikutnya.'
     ],
-    
-    'menang' => [
-        'title' => 'Kondisi Menang',
-        'content' => 'Pemain yang pertama kali mengumpulkan 5 artefak dari minimal 3 daerah berbeda memenangkan permainan.'
-    ],
-    
-    'kalah' => [
-        'title' => 'Kondisi Kalah',
-        'content' => 'Jika nyawa pemain habis (0 poin), pemain tersebut gugur dan tidak dapat melanjutkan permainan.'
-    ],
-    
-    'tips' => [
-        'title' => 'Tips Strategi',
+
+    'petak' => [
+        'title' => 'Jenis Petak di Papan',
         'items' => [
-            'Kumpulkan kartu aksi khusus untuk proteksi',
-            'Hindari zona gelap jika nyawa sedang rendah',
-            'Manfaatkan rumah adat untuk memulihkan nyawa sebelum masuk area berbahaya',
-            'Perhatikan artefak lawan dan gunakan kartu santet di saat yang tepat',
-            'Seimbangkan antara mengumpulkan artefak dan menjaga nyawa'
-        ]
-    ],
-    
-    'variasi' => [
-        'title' => 'Variasi Permainan',
-        'modes' => [
             [
-                'name' => 'Mode Kooperatif',
-                'desc' => 'Semua pemain bekerja sama melawan deck kejadian untuk mengumpulkan total 15 artefak sebelum waktu habis.'
+                'name' => 'Petak Hijau',
+                'sub_items' => [
+                    'Manusia → mengambil kartu Buff.',
+                    'Hantu → mengambil kartu Debuff.',
+                ]
             ],
             [
-                'name' => 'Mode Expert',
-                'desc' => 'Tambahkan kartu bos arwah yang muncul setiap 5 giliran. Pemain harus mengalahkan bos bersama-sama atau kehilangan artefak.'
-            ]
+                'name' => 'Petak Ungu',
+                'sub_items' => [
+                    'Hantu → mengambil kartu Buff.',
+                    'Manusia → mengambil kartu Debuff.',
+                ]
+            ],
+            [
+                'name' => 'Petak Putih',
+                'desc' => 'Tidak memiliki efek khusus.'
+            ],
+            [
+                'name' => 'Wilayah Suci',
+                'sub_items' => [
+                    'Hantu tidak dapat melakukan serangan pada giliran berikutnya.',
+                    'Jika Manusia berada di petak ini, ia dapat menghapus 1 kartu Debuff yang dimiliki (jika ada).',
+                ]
+            ],
+            [
+                'name' => 'Wilayah Terkutuk',
+                'sub_items' => [
+                    'Manusia tidak dapat menggunakan Buff pada giliran berikutnya.',
+                    'Jika Hantu berada di petak ini, ia dapat menghapus 1 kartu Debuff yang dimiliki (jika ada).',
+                ]
+            ],
+            [
+                'name' => 'Perangkap',
+                'desc' => 'Pemain yang berhenti di petak ini harus melewatkan 1 giliran.'
+            ],
         ]
     ],
-    
+
+    'serangan' => [
+        'title' => 'Mekanisme Serangan',
+        'intro' => 'Serangan terjadi jika Hantu dan Manusia berada di petak yang sama.',
+        'zones' => [
+            [
+                'name' => 'Zona Siang',
+                'items' => [
+                    'Hantu harus melempar dadu untuk menyerang.',
+                    'Serangan berhasil hanya jika mendapat angka 4.',
+                    'Manusia memiliki peluang bertahan lebih besar.',
+                ]
+            ],
+            [
+                'name' => 'Zona Malam',
+                'items' => [
+                    'Hantu dapat langsung menyerang tanpa melempar dadu.',
+                    'Manusia lebih sulit bertahan dari serangan.',
+                ]
+            ],
+        ],
+        'outro' => 'Jika serangan berhasil, nyawa lawan berkurang 1 poin.'
+    ],
+
+    'kondisi' => [
+        'title' => 'Kondisi Menang & Kalah',
+        'roles' => [
+            [
+                'name' => 'Manusia Menang Jika',
+                'items' => [
+                    'Berhasil mencapai petak Finish dengan minimal 1 nyawa, atau',
+                    'Semua nyawa Hantu habis.',
+                ]
+            ],
+            [
+                'name' => 'Manusia Kalah Jika',
+                'items' => [
+                    'Semua nyawanya habis, atau',
+                    'Hantu mencapai Finish lebih dahulu.',
+                ]
+            ],
+            [
+                'name' => 'Hantu Menang Jika',
+                'items' => [
+                    'Semua nyawa Manusia habis, atau',
+                    'Berhasil mencapai Finish lebih dahulu.',
+                ]
+            ],
+            [
+                'name' => 'Hantu Kalah Jika',
+                'items' => [
+                    'Semua nyawanya habis, atau',
+                    'Manusia mencapai Finish dengan minimal 1 nyawa.',
+                ]
+            ],
+        ]
+    ],
+
+    'akhir' => [
+        'title' => 'Akhir Permainan',
+        'content' => 'Permainan langsung berakhir ketika salah satu kondisi menang atau kalah terpenuhi.'
+    ],
+
     'button_back' => 'Kembali ke Home'
 ];
