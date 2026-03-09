@@ -24,6 +24,7 @@ if ($isDeleteRequest) {
         
         $deleteQuery = "DELETE FROM tb_merch WHERE id_merch = ?";
         $deleteStatement = mysqli_prepare($koneksi, $deleteQuery);
+        mysqli_stmt_bind_param($deleteStatement, "i", $merchandiseId);
         $isDeleted = mysqli_stmt_execute($deleteStatement);
         mysqli_stmt_close($deleteStatement);
         

@@ -25,42 +25,184 @@ if ($isEditMode) {
 $pageTitle = $isEditMode ? 'Edit Merchandise' : 'Tambah Merchandise';
 ?>
 
-<h3 class="mb-3"><?= $pageTitle ?></h3>
+<style>
+    .f-wrap {
+        max-width: 1250px;
+        background: #fff;
+        border: 1px solid #e2d9f3;
+        border-radius: 10px;
+        overflow: hidden;
+    }
 
-<form action="merch_proses.php" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="id_merch" value="<?= htmlspecialchars($merchandiseData['id_merch'] ?? '') ?>">
-    <input type="hidden" name="foto_lama" value="<?= htmlspecialchars($merchandiseData['foto_merch'] ?? '') ?>">
+    .f-head {
+        padding: 14px 20px;
+        background: #ede8fa;
+        border-bottom: 1px solid #e2d9f3;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #2d3748;
+    }
 
-    <div class="mb-3">
-        <label>Judul Merchandise</label>
-        <input type="text" name="judul_merch" class="form-control" value="<?= htmlspecialchars($merchandiseData['judul_merch'] ?? '') ?>" required>
+    .f-body {
+        padding: 24px 20px;
+    }
+
+    .f-body label {
+        display: block;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: #4a5568;
+        margin-bottom: 5px;
+    }
+
+    .f-body .form-control {
+        width: 100%;
+        padding: 9px 12px;
+        font-size: 0.88rem;
+        border: 1px solid #d8cff0;
+        border-radius: 7px;
+        background: #fafafa;
+        color: #2d3748;
+        font-family: 'Poppins', sans-serif;
+        outline: none;
+        transition: border-color 0.15s;
+    }
+
+    .f-body .form-control:focus {
+        border-color: #7c5ec9;
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(124, 94, 201, 0.1);
+    }
+
+    textarea.form-control {
+        resize: vertical;
+        min-height: 90px;
+    }
+
+    .f-row {
+        display: flex;
+        gap: 14px;
+    }
+
+    .f-row > div {
+        flex: 1;
+    }
+
+    .f-group {
+        margin-bottom: 16px;
+    }
+
+    .foto-lama {
+        margin-top: 8px;
+        font-size: 0.8rem;
+        color: #718096;
+    }
+
+    .foto-lama img {
+        width: 48px;
+        height: 48px;
+        object-fit: cover;
+        border-radius: 6px;
+        border: 1px solid #d8cff0;
+        vertical-align: middle;
+        margin-right: 6px;
+    }
+
+    .f-footer {
+        display: flex;
+        gap: 8px;
+        justify-content: flex-end;
+        padding-top: 8px;
+        border-top: 1px solid #f0ebfa;
+        margin-top: 4px;
+    }
+
+    .btn-save {
+        padding: 9px 20px;
+        background: #7c5ec9;
+        color: #fff !important;
+        border: none;
+        border-radius: 7px;
+        font-size: 0.87rem;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: 'Poppins', sans-serif;
+        transition: background 0.2s;
+    }
+
+    .btn-save:hover {
+        background: #6b4eb8;
+    }
+
+    .btn-back {
+        padding: 9px 18px;
+        background: #fff;
+        color: #718096 !important;
+        border: 1px solid #d1d5db;
+        border-radius: 7px;
+        font-size: 0.87rem;
+        text-decoration: none;
+        font-family: 'Poppins', sans-serif;
+        transition: background 0.2s;
+    }
+
+    .btn-back:hover {
+        background: #f7f7f7;
+    }
+</style>
+
+<div class="f-wrap">
+    <div class="f-head"><?= $pageTitle ?></div>
+
+    <div class="f-body">
+        <form action="merch_proses.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id_merch" value="<?= htmlspecialchars($merchandiseData['id_merch'] ?? '') ?>">
+            <input type="hidden" name="foto_lama" value="<?= htmlspecialchars($merchandiseData['foto_merch'] ?? '') ?>">
+
+            <div class="f-group">
+                <label>Judul Merchandise</label>
+                <input type="text" name="judul_merch" class="form-control"
+                    value="<?= htmlspecialchars($merchandiseData['judul_merch'] ?? '') ?>" required>
+            </div>
+
+            <div class="f-row">
+                <div class="f-group">
+                    <label>Harga</label>
+                    <input type="number" step="0.01" name="harga_merch" class="form-control"
+                        value="<?= htmlspecialchars($merchandiseData['harga_merch'] ?? '') ?>" required>
+                </div>
+                <div class="f-group">
+                    <label>Stok</label>
+                    <input type="number" name="stock_merch" class="form-control"
+                        value="<?= htmlspecialchars($merchandiseData['stock_merch'] ?? '0') ?>" required min="0">
+                </div>
+            </div>
+
+            <div class="f-group">
+                <label>Detail Merchandise</label>
+                <textarea name="detail_merch" class="form-control"
+                    required><?= htmlspecialchars($merchandiseData['detail_merch'] ?? '') ?></textarea>
+            </div>
+
+            <div class="f-group">
+                <label>Foto Merchandise</label>
+                <input type="file" name="foto_merch" class="form-control" accept="image/*">
+                <?php if (!empty($merchandiseData['foto_merch'])): ?>
+                    <div class="foto-lama">
+                        <img src="../uploads/<?= htmlspecialchars($merchandiseData['foto_merch']) ?>" alt="Foto lama">
+                        <?= htmlspecialchars($merchandiseData['foto_merch']) ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+            <div class="f-footer">
+                <a href="merch_tampil.php" class="btn-back">Kembali</a>
+                <button type="submit" class="btn-save">
+                    <?= $isEditMode ? 'Simpan Perubahan' : 'Tambah' ?>
+                </button>
+            </div>
+        </form>
     </div>
-
-    <div class="mb-3">
-        <label>Harga</label>
-        <input type="number" step="0.01" name="harga_merch" class="form-control" value="<?= htmlspecialchars($merchandiseData['harga_merch'] ?? '') ?>" required>
-    </div>
-
-    <div class="mb-3">
-        <label>Stok</label>
-        <input type="number" name="stock_merch" class="form-control" value="<?= htmlspecialchars($merchandiseData['stock_merch'] ?? '0') ?>" required min="0">
-    </div>
-
-    <div class="mb-3">
-        <label>Detail Merchandise</label>
-        <textarea name="detail_merch" class="form-control" rows="4" required><?= htmlspecialchars($merchandiseData['detail_merch'] ?? '') ?></textarea>
-    </div>
-
-    <div class="mb-3">
-        <label>Foto Merchandise</label>
-        <input type="file" name="foto_merch" class="form-control">
-        <?php if (!empty($merchandiseData['foto_merch'])): ?>
-            <small>Foto lama: <?= htmlspecialchars($merchandiseData['foto_merch']) ?></small>
-        <?php endif; ?>
-    </div>
-
-    <button class="btn btn-primary">Simpan</button>
-    <a href="merch_tampil.php" class="btn btn-secondary">Kembali</a>
-</form>
+</div>
 
 <?php include 'layout/footer.php'; ?>
