@@ -26,7 +26,7 @@ $result = mysqli_stmt_get_result($statement);
 if (mysqli_num_rows($result) === 1) {
     $userData = mysqli_fetch_assoc($result);
     
-    if (password_verify($password, $userData['password'])) {
+    if (md5($password) === $userData['password']) {
         $_SESSION['login'] = true;
         $_SESSION['user_name'] = $userData['user_name'];
         $_SESSION['nama_admin'] = $userData['nama_admin'];
