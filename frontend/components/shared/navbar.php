@@ -5,7 +5,7 @@ $activeSection = $activeSection ?? '';
 <nav class="navbar" id="navbar">
     <div class="container nav-container">
         <div class="logo">
-            <img src="<?= $navPrefix ? '../' : '' ?>assets/logonavbar.png" alt="Logo Tapak Arwah Nusantara">
+            <img src="assets/logonavbar.png" alt="Logo Tapak Arwah Nusantara">
         </div>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
             <span></span>

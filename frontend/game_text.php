@@ -1,42 +1,34 @@
 <?php
 
-define('BOARD_IMAGE', 'assets/Arena Tapak Arwah Nusantara.png');
+define('BOARD_IMAGE', 'assets/Papan Permainan Tapak Arwah Nusantara new.png');
 
 return [
     'page_title' => 'Cara Bermain Tapak Arwah Nusantara',
-    
+
     'board_preview' => [
         'image' => BOARD_IMAGE,
         'caption' => 'Papan Permainan'
     ],
-    
+
     'komponen' => [
         'title' => 'Komponen Permainan',
         'items' => [
             ['name' => 'Papan Permainan', 'image' => BOARD_IMAGE],
-            ['name' => 'Kartu Buff', 'image' => 'assets/cardbuff.png'],
-            ['name' => 'Kartu Debuff', 'image' => 'assets/carddebuff.png'],
+            ['name' => 'Kartu Buff', 'image' => 'assets/Card Hantu new.png'],
+            ['name' => 'Kartu Debuff', 'image' => 'assets/Card Manusia new.png'],
             ['name' => 'Pion Merah', 'image' => 'assets/pion1.jpeg'],
             ['name' => 'Pion Biru', 'image' => 'assets/pion2.jpeg'],
-            ['name' => 'Token Nyawa', 'image' => 'assets/logoutama.png'],
-            ['name' => 'Dadu', 'image' => 'assets/dadu.png']
+            ['name' => 'Token Nyawa', 'image' => 'assets/token nyawa new.jpeg'],
+            ['name' => 'Dadu', 'image' => 'assets/dadu new.jpg']
         ]
     ],
-    
+
     'persiapan' => [
         'title' => 'Persiapan Permainan',
         'items' => [
-            ['text' => 'Letakkan papan permainan di tengah meja.'],
-            ['text' => 'Permainan dimainkan oleh 2 pemain, yaitu Hantu dan Manusia.'],
-            [
-                'text' => 'Setiap pemain:',
-                'sub_items' => [
-                    'Memilih pion sesuai perannya.',
-                    'Memulai permainan dari petak Start.',
-                    'Memiliki 3 poin nyawa.',
-                ]
-            ],
-            ['text' => 'Siapkan deck kartu Buff dan Debuff, lalu kocok dan letakkan menghadap ke bawah di tempat yang telah ditentukan pada papan permainan.'],
+            ['text' => 'Terdapat 2 pemain: Hantu dan Manusia.'],
+            ['text' => 'Masing-masing pemain memiliki 3 nyawa.'],
+            ['text' => 'Kedua pion ditempatkan di petak Start.']
         ]
     ],
 
@@ -44,118 +36,116 @@ return [
         'title' => 'Menentukan Giliran',
         'intro' => 'Untuk menentukan pemain pertama:',
         'items' => [
-            'Kedua pemain melempar dadu sebanyak 2 kali.',
-            'Jumlahkan hasil kedua lemparan.',
-            'Pemain dengan total angka terbesar mendapat giliran pertama.',
-            'Jika hasilnya sama, kedua pemain mengulang lemparan hingga ada pemenang.',
+            'Kedua pemain melempar dadu 1 kali.',
+            'Jika hasil seri, lempar ulang.',
+            'Pemain dengan angka terbesar mendapat giliran pertama.'
         ]
     ],
 
     'giliran' => [
-        'title' => 'Giliran Pemain',
-        'intro' => 'Dalam 1 giliran, pemain melakukan 3 langkah berikut:',
+        'title' => 'Alur Giliran',
+        'intro' => 'Dalam setiap giliran, pemain melakukan langkah berikut:',
         'phases' => [
-            ['name' => 'Fase Lempar Dadu:', 'desc' => 'Lempar dadu untuk menentukan jumlah langkah.'],
-            ['name' => 'Fase Pergerakan:', 'desc' => 'Gerakkan pion sesuai angka yang muncul pada dadu.'],
-            ['name' => 'Fase Efek Petak:', 'desc' => 'Jalankan efek dari petak tempat pion berhenti.'],
+            ['name' => 'a. Lempar dadu', 'desc' => 'Lempar dadu untuk menentukan jumlah langkah.'],
+            ['name' => 'b. Gerakkan pion', 'desc' => 'Gerakkan pion sesuai jumlah angka pada dadu.'],
+            ['name' => 'c. Jalankan efek petak', 'desc' => 'Jalankan efek petak tempat pemain berhenti.'],
+            ['name' => 'd. Gunakan 1 kartu (opsional)', 'desc' => 'Kartu buff dapat disimpan, sedangkan kartu debuff langsung berlaku.'],
         ],
         'outro' => 'Setelah semua langkah selesai, giliran berpindah ke pemain berikutnya.'
     ],
 
     'petak' => [
-        'title' => 'Jenis Petak di Papan',
+        'title' => 'Efek Petak di Papan',
         'items' => [
             [
-                'name' => 'Petak Hijau',
+                'name' => 'Hijau',
                 'sub_items' => [
-                    'Manusia → mengambil kartu Buff.',
-                    'Hantu → mengambil kartu Debuff.',
+                    'Manusia → mengambil 1 kartu buff.',
+                    'Hantu → mengambil 1 kartu debuff.',
                 ]
             ],
             [
-                'name' => 'Petak Ungu',
+                'name' => 'Ungu',
                 'sub_items' => [
-                    'Hantu → mengambil kartu Buff.',
-                    'Manusia → mengambil kartu Debuff.',
+                    'Hantu → mengambil 1 kartu buff.',
+                    'Manusia → mengambil 1 kartu debuff.',
                 ]
-            ],
-            [
-                'name' => 'Petak Putih',
-                'desc' => 'Tidak memiliki efek khusus.'
             ],
             [
                 'name' => 'Wilayah Suci',
                 'sub_items' => [
-                    'Hantu tidak dapat melakukan serangan pada giliran berikutnya.',
-                    'Jika Manusia berada di petak ini, ia dapat menghapus 1 kartu Debuff yang dimiliki (jika ada).',
+                    'Hantu → tidak dapat menyerang pada giliran berikutnya.',
+                    'Manusia → menghapus 1 debuff (jika ada).',
                 ]
             ],
             [
                 'name' => 'Wilayah Terkutuk',
                 'sub_items' => [
-                    'Manusia tidak dapat menggunakan Buff pada giliran berikutnya.',
-                    'Jika Hantu berada di petak ini, ia dapat menghapus 1 kartu Debuff yang dimiliki (jika ada).',
+                    'Manusia → tidak dapat menggunakan buff pada giliran berikutnya.',
+                    'Hantu → menghapus 1 debuff (jika ada).',
                 ]
             ],
             [
+                'name' => 'Putih',
+                'desc' => 'Jalankan efek petak. Jika tidak ada keterangan, petak bersifat netral.'
+            ],
+            [
                 'name' => 'Perangkap',
-                'desc' => 'Pemain yang berhenti di petak ini harus melewatkan 1 giliran.'
+                'desc' => 'Pemain melewatkan 1 giliran berikutnya.'
+            ],
+            [
+                'name' => 'Serangan',
+                'desc' => 'Terjadi saat kedua pemain berada di petak yang sama.'
             ],
         ]
     ],
 
     'serangan' => [
-        'title' => 'Mekanisme Serangan',
-        'intro' => 'Serangan terjadi jika Hantu dan Manusia berada di petak yang sama.',
+        'title' => 'Interaksi & Efek Zona',
+        'intro' => 'Jika Hantu dan Manusia berada di petak yang sama, maka terjadi serangan. Ikuti aturan serangan sesuai zona.',
         'zones' => [
             [
                 'name' => 'Zona Siang',
                 'items' => [
-                    'Hantu harus melempar dadu untuk menyerang.',
-                    'Serangan berhasil hanya jika mendapat angka 4.',
-                    'Manusia memiliki peluang bertahan lebih besar.',
+                    'Hantu melempar dadu untuk menyerang.',
+                    'Jika hasil 4, Manusia kehilangan 1 nyawa.',
+                    'Jika Hantu gagal, Manusia melempar dadu untuk melawan.',
+                    'Jika hasil 3–4, Hantu kehilangan 1 nyawa.',
                 ]
             ],
             [
                 'name' => 'Zona Malam',
                 'items' => [
-                    'Hantu dapat langsung menyerang tanpa melempar dadu.',
-                    'Manusia lebih sulit bertahan dari serangan.',
+                    'Hantu langsung menyerang.',
+                    'Manusia melempar dadu untuk bertahan.',
+                    'Jika hasil 1–2, Manusia kehilangan 1 nyawa.',
+                    'Jika hasil 3, Manusia berhasil bertahan.',
+                    'Jika hasil 4, Manusia berhasil bertahan dan Hantu kehilangan 1 nyawa.',
                 ]
             ],
         ],
-        'outro' => 'Jika serangan berhasil, nyawa lawan berkurang 1 poin.'
+        'outro' => 'Serangan hanya terjadi ketika kedua pemain berada di petak yang sama.'
     ],
 
     'kondisi' => [
-        'title' => 'Kondisi Menang & Kalah',
+        'title' => 'Kondisi Menang',
         'roles' => [
             [
-                'name' => 'Manusia Menang Jika',
+                'name' => 'Tujuan Permainan',
                 'items' => [
-                    'Berhasil mencapai petak Finish dengan minimal 1 nyawa, atau',
-                    'Semua nyawa Hantu habis.',
+                    'Kurangi nyawa lawan hingga habis untuk memenangkan permainan.',
                 ]
             ],
             [
-                'name' => 'Manusia Kalah Jika',
+                'name' => 'Manusia Menang Jika',
                 'items' => [
-                    'Semua nyawanya habis, atau',
-                    'Hantu mencapai Finish lebih dahulu.',
+                    'Seluruh nyawa Hantu habis.',
                 ]
             ],
             [
                 'name' => 'Hantu Menang Jika',
                 'items' => [
-                    'Semua nyawa Manusia habis, atau',
-                    'Berhasil mencapai Finish lebih dahulu.',
-                ]
-            ],
-            [
-                'name' => 'Hantu Kalah Jika',
-                'items' => [
-                    'Semua nyawanya habis, atau',
-                    'Manusia mencapai Finish dengan minimal 1 nyawa.',
+                    'Seluruh nyawa Manusia habis.',
                 ]
             ],
         ]
@@ -163,7 +153,7 @@ return [
 
     'akhir' => [
         'title' => 'Akhir Permainan',
-        'content' => 'Permainan langsung berakhir ketika salah satu kondisi menang atau kalah terpenuhi.'
+        'content' => 'Permainan berakhir segera setelah salah satu pemain memenuhi kondisi menang.'
     ],
 
     'button_back' => 'Kembali ke Home'

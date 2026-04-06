@@ -5,7 +5,7 @@
             <div class="game-card">
                 <div class="game-preview">
                     <div class="image-frame">
-                        <img src="assets/Arena Tapak Arwah Nusantara.png" alt="Arena Tapak Arwah Nusantara" class="board-image">
+                        <img src="assets/Papan Permainan Tapak Arwah Nusantara new.png" alt="Arena Tapak Arwah Nusantara" class="board-image">
                         <div class="image-overlay">
                             <span class="overlay-badge">Papan Permainan</span>
                         </div>
@@ -17,9 +17,9 @@
                         <span class="game-subtitle">Board Game</span>
                     </div>
                     <p class="game-description">
-                        Permainan papan bertema mistis Nusantara untuk 2 pemain yang menghadirkan pertarungan antara Hantu dan Manusia. 
-                        Dalam permainan ini, kedua pemain berlomba mencapai Finish sambil mempertahankan nyawa, memanfaatkan kartu Buff dan Debuff, 
-                        serta menghadapi berbagai efek petak di papan permainan.
+                        Permainan papan bertema mistis Nusantara untuk 2 pemain yang menghadirkan pertarungan antara Hantu dan Manusia.
+                        Setiap pemain memiliki 3 nyawa dan memulai permainan dari petak Start. Pemain bergerak menggunakan dadu, menjalankan efek petak,
+                        memakai kartu Buff atau Debuff, dan menyerang lawan saat berada di petak yang sama hingga salah satu nyawa pemain habis.
                     </p>
                     <div class="game-specs">
                         <div class="spec-item">
@@ -30,20 +30,20 @@
                         </div>
                         <div class="spec-item">
                             <div class="spec-content">
-                                <span class="spec-label">Durasi Permainan</span>
-                                <span class="spec-value">± 20–30 Menit</span>
+                                <span class="spec-label">Peran</span>
+                                <span class="spec-value">Hantu & Manusia</span>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-content">
+                                <span class="spec-label">Nyawa Awal</span>
+                                <span class="spec-value">3 Nyawa</span>
                             </div>
                         </div>
                         <div class="spec-item">
                             <div class="spec-content">
                                 <span class="spec-label">Tema</span>
                                 <span class="spec-value">Mistis Nusantara</span>
-                            </div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-content">
-                                <span class="spec-label">Genre</span>
-                                <span class="spec-value">Strategi dan Kompetitif</span>
                             </div>
                         </div>
                     </div>

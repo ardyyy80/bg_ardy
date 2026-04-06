@@ -4,9 +4,21 @@ include 'cek_login.php';
 $active = 'komen';
 $page_title = 'Komentar';
 
+include '../config/koneksi.php';
+require_once '../services/CommentService.php';
+
+$commentService = new CommentService($koneksi);
+$latestNotificationComment = $commentService->getLatestUnnotifiedComment();
+
+if ($latestNotificationComment) {
+    $commentService->markAsNotified((int) $latestNotificationComment['id_komen']);
+}
+
+$commentService->markAllAsRead();
+$commentNotificationCount = 0;
+
 include 'layout/header.php';
 include 'layout/sidebar.php';
-include '../config/koneksi.php';
 
 $query = "SELECT * FROM tb_komen ORDER BY id_komen DESC";
 $commentList = mysqli_query($koneksi, $query);
@@ -51,13 +63,17 @@ $commentList = mysqli_query($koneksi, $query);
 </div>
 
 <script>
+<?php if ($latestNotificationComment): ?>
+    showSuccessNotification('Komentar baru dari <?= htmlspecialchars(addslashes($latestNotificationComment['nama_penulis'])) ?> berhasil masuk.');
+<?php endif; ?>
+
 <?php if (isset($_SESSION['success_message'])): ?>
-    showSuccessNotification('<?= $_SESSION['success_message'] ?>');
+    showSuccessNotification('<?= htmlspecialchars(addslashes($_SESSION['success_message'])) ?>');
     <?php unset($_SESSION['success_message']); ?>
 <?php endif; ?>
 
 <?php if (isset($_SESSION['error_message'])): ?>
-    showErrorNotification('<?= $_SESSION['error_message'] ?>');
+    showErrorNotification('<?= htmlspecialchars(addslashes($_SESSION['error_message'])) ?>');
     <?php unset($_SESSION['error_message']); ?>
 <?php endif; ?>
 </script>

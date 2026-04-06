@@ -1,3 +1,13 @@
+<?php
+if (!isset($commentNotificationCount)) {
+    include_once '../config/koneksi.php';
+    require_once '../services/CommentService.php';
+
+    $commentService = new CommentService($koneksi);
+    $commentNotificationCount = $commentService->getUnreadCount();
+}
+?>
+
 <div class="d-flex">
     <div class="sidebar">
         <div class="admin-profile">
@@ -19,7 +29,16 @@
         </a>
 
         <a href="komen_tampil.php" class="<?= ($active == 'komen') ? 'active' : '' ?>">
-            <i class="fas fa-comments menu-icon"></i> Komentar
+            <span class="menu-label-with-badge">
+                <span><i class="fas fa-comments menu-icon"></i> Komentar</span>
+                <?php if ($commentNotificationCount > 0): ?>
+                    <span class="menu-badge"><?= $commentNotificationCount ?></span>
+                <?php endif; ?>
+            </span>
+        </a>
+
+        <a href="admin_tampil.php" class="<?= ($active == 'admin') ? 'active' : '' ?>">
+            <i class="fas fa-user-shield menu-icon"></i> Kelola Admin
         </a>
 
         <div class="mt-auto">

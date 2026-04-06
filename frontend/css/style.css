@@ -495,10 +495,13 @@ html {
 }
 
 .image-frame {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     max-width: 340px;
     transition: transform 0.5s ease;
+    gap: 0;
 }
 
 .game-card:hover .image-frame {
@@ -508,31 +511,34 @@ html {
 .board-image {
     width: 100%;
     height: auto;
-    max-height: 340px;
-    border-radius: 12px;
+    max-height: 320px;
+    border-radius: 12px 12px 0 0;
     object-fit: contain;
     object-position: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    display: block;
 }
 
 .image-overlay {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(58, 6, 6, 0.9);
-    padding: 8px 20px;
-    border-radius: 30px;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(235, 213, 171, 0.2);
+    width: 100%;
+    background: rgba(58, 6, 6, 0.92);
+    padding: 10px 16px;
+    border-radius: 0 0 12px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(235, 213, 171, 0.15);
+    border-top: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .overlay-badge {
     color: #EBD5AB;
     font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
+    font-size: 0.7rem;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .game-info {
