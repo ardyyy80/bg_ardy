@@ -14,11 +14,11 @@ return [
         'title' => 'Komponen Permainan',
         'items' => [
             ['name' => 'Papan Permainan', 'image' => BOARD_IMAGE],
-            ['name' => 'Kartu Buff', 'image' => 'assets/Card Hantu new.png'],
-            ['name' => 'Kartu Debuff', 'image' => 'assets/Card Manusia new.png'],
-            ['name' => 'Pion Merah', 'image' => 'assets/pion1.jpeg'],
-            ['name' => 'Pion Biru', 'image' => 'assets/pion2.jpeg'],
-            ['name' => 'Token Nyawa', 'image' => 'assets/token nyawa new.jpeg'],
+            ['name' => 'Kartu Hantu', 'image' => 'assets/Card Hantu new.png'],
+            ['name' => 'Kartu Manusia', 'image' => 'assets/Card Manusia new.png'],
+            ['name' => 'Pion Manusia', 'image' => 'assets/pion1.jpeg'],
+            ['name' => 'Pion Hantu', 'image' => 'assets/pion2.jpeg'],
+            ['name' => 'Nyawa', 'image' => 'assets/token nyawa new.jpeg'],
             ['name' => 'Dadu', 'image' => 'assets/dadu new.jpg']
         ]
     ],

@@ -2,7 +2,7 @@
 include 'cek_login.php';
 
 $active = 'admin';
-$page_title = 'Kelola Admin';
+$page_title = 'Setting Admin';
 
 include 'layout/header.php';
 include 'layout/sidebar.php';

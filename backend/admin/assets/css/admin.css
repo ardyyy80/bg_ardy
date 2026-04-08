@@ -574,11 +574,24 @@ small {
 }
 
 .admin-table-wrapper {
-    max-height: 320px;
+    height: 320px;
+    overflow-y: auto;
+    overflow-x: auto;
+    display: block;
+}
+
+.admin-table-wrapper .table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: linear-gradient(135deg, #c5b3f0 0%, #d4c5f9 100%);
 }
 
 .activity-table-wrapper {
-    max-height: 340px;
+    height: 340px;
+    overflow-y: auto;
+    overflow-x: auto;
+    display: block;
 }
 
 @media (max-width: 991px) {

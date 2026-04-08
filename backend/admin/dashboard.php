@@ -63,10 +63,10 @@ $hasActivities = mysqli_num_rows($activityList) > 0;
         <div class="card shadow-sm h-100 admin-dashboard-panel">
             <div class="card-header admin-panel-header">
                 <div>
-                    <h5 class="mb-0">Kelola Admin</h5>
+                    <h5 class="mb-0">Daftar Admin</h5>
                     <small class="admin-panel-subtitle">Lihat daftar admin aktif beserta username yang digunakan.</small>
                 </div>
-                <a href="admin_tampil.php" class="btn btn-primary btn-sm admin-panel-action">Buka Kelola Admin</a>
+                <a href="admin_tampil.php" class="btn btn-primary btn-sm admin-panel-action">Buka Setting Admin</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive admin-table-wrapper">
