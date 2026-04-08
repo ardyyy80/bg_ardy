@@ -6,8 +6,9 @@
             $merchImageOverrides = [
                 'dadu' => 'dadu new.jpg',
                 'token nyawa' => 'token nyawa new.jpeg',
-                'topi' => 'topi new.jpeg',
+                'topi' => 'merchtnew.jpeg',
                 'tumbler' => 'Tumblernew.jpeg',
+                'sticker' => 'stickermerch.jpeg',
                 'card hantu' => 'Card Hantu new.png',
                 'card manusia' => 'Card Manusia new.png',
                 'papan permainan tapak arwah nusantara' => 'Papan Permainan Tapak Arwah Nusantara new.png',

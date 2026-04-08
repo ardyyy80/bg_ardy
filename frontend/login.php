@@ -15,7 +15,8 @@ $successMessage = getFlashMessage('success');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Backend Gameardy</title>
+    <title>Login Admin | Tapak Arwah Nusantara</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="stylesheet" href="../backend/admin/assets/css/login.css">
 </head>
 <body>

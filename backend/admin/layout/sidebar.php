@@ -10,17 +10,12 @@ if (!isset($commentNotificationCount)) {
 
 <div class="d-flex">
     <div class="sidebar">
-        <div class="admin-profile">
-            <div class="profile-avatar">
-                <i class="fas fa-user"></i>
-            </div>
-            <div class="profile-info">
-                <div class="profile-name"><?= htmlspecialchars($_SESSION['nama_admin'] ?? 'Admin') ?></div>
-                <div class="profile-role">Admin</div>
-            </div>
+        <div class="sidebar-brand">
+            <img src="../../frontend/assets/logonavbar.png" alt="Logo Navbar" class="sidebar-brand-logo">
         </div>
 
-        <a href="dashboard.php" class="<?= ($active == 'dashboard') ? 'active' : '' ?>">
+        <div class="sidebar-menu">
+            <a href="dashboard.php" class="<?= ($active == 'dashboard') ? 'active' : '' ?>">
             <i class="fas fa-chart-line menu-icon"></i> Dashboard
         </a>
 
@@ -36,21 +31,43 @@ if (!isset($commentNotificationCount)) {
                 <?php endif; ?>
             </span>
         </a>
+        </div>
 
-        <a href="admin_tampil.php" class="<?= ($active == 'admin') ? 'active' : '' ?>">
-            <i class="fas fa-user-shield menu-icon"></i> Setting Profil
-        </a>
-
-        <div class="mt-auto">
-            <a href="javascript:void(0)" onclick="confirmLogout('../logout.php')" class="logout-btn">
-                <i class="fas fa-arrow-right-from-bracket menu-icon"></i> Logout
-            </a>
+        <div class="admin-profile admin-profile-bottom">
+            <div class="profile-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="profile-info">
+                <div class="profile-name"><?= htmlspecialchars($_SESSION['nama_admin'] ?? 'Admin') ?></div>
+                <div class="profile-role">Admin</div>
+            </div>
         </div>
     </div>
 
     <div class="flex-fill">
         <div class="header-top">
             <h3><?= htmlspecialchars($page_title ?? 'Admin Panel') ?></h3>
+
+            <div class="header-actions">
+                <details class="header-account-menu">
+                    <summary class="header-action-btn <?= ($active == 'admin') ? 'active' : '' ?>">
+                        <i class="fas fa-user-circle"></i>
+                        <i class="fas fa-chevron-down header-dropdown-icon"></i>
+                    </summary>
+
+                    <div class="header-dropdown-list">
+                        <a href="admin_tampil.php" class="header-dropdown-item <?= ($active == 'admin') ? 'active' : '' ?>">
+                            <i class="fas fa-user-shield"></i>
+                            <span>Setting Profil</span>
+                        </a>
+
+                        <a href="javascript:void(0)" onclick="confirmLogout('../logout.php')" class="header-dropdown-item logout-header-btn">
+                            <i class="fas fa-arrow-right-from-bracket"></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </details>
+            </div>
         </div>
 
         <div class="content p-4">

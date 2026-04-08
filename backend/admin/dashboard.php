@@ -20,9 +20,9 @@ $commentQuery = "SELECT COUNT(*) as total FROM tb_komen";
 $commentResult = mysqli_query($koneksi, $commentQuery);
 $totalComments = mysqli_fetch_assoc($commentResult)['total'];
 
-$adminListQuery = "SELECT nama_admin, user_name FROM tb_admin ORDER BY nama_admin ASC";
-$adminListResult = mysqli_query($koneksi, $adminListQuery);
-$hasAdminList = mysqli_num_rows($adminListResult) > 0;
+$latestCommentsQuery = "SELECT nama_penulis, detail_komen, tanggal_komen FROM tb_komen ORDER BY id_komen DESC LIMIT 5";
+$latestCommentsResult = mysqli_query($koneksi, $latestCommentsQuery);
+$hasLatestComments = mysqli_num_rows($latestCommentsResult) > 0;
 
 $activityQuery = "SELECT * FROM tb_activity_log ORDER BY created_at DESC";
 $activityList = mysqli_query($koneksi, $activityQuery);
@@ -63,10 +63,10 @@ $hasActivities = mysqli_num_rows($activityList) > 0;
         <div class="card shadow-sm h-100 admin-dashboard-panel">
             <div class="card-header admin-panel-header">
                 <div>
-                    <h5 class="mb-0">Daftar Admin</h5>
-                    <small class="admin-panel-subtitle">Lihat daftar admin aktif beserta username yang digunakan.</small>
+                    <h5 class="mb-0">Komentar Terbaru</h5>
+                    <small class="admin-panel-subtitle">Pantau komentar terbaru yang masuk dari pengunjung.</small>
                 </div>
-                <a href="admin_tampil.php" class="btn btn-primary btn-sm admin-panel-action">Buka Setting Admin</a>
+                <a href="komen_tampil.php" class="btn btn-primary btn-sm admin-panel-action">Lihat Semua Komentar</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive admin-table-wrapper">
@@ -74,25 +74,27 @@ $hasActivities = mysqli_num_rows($activityList) > 0;
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Admin</th>
-                                <th>Username</th>
+                                <th>Nama Penulis</th>
+                                <th>Komentar</th>
+                                <th>Tanggal</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if ($hasAdminList): ?>
+                            <?php if ($hasLatestComments): ?>
                                 <?php
-                                $adminNumber = 1;
-                                while ($admin = mysqli_fetch_assoc($adminListResult)):
+                                $commentNumber = 1;
+                                while ($comment = mysqli_fetch_assoc($latestCommentsResult)):
                                 ?>
                                 <tr>
-                                    <td><?= $adminNumber++ ?></td>
-                                    <td><?= htmlspecialchars($admin['nama_admin']) ?></td>
-                                    <td><?= htmlspecialchars($admin['user_name']) ?></td>
+                                    <td><?= $commentNumber++ ?></td>
+                                    <td><?= htmlspecialchars($comment['nama_penulis']) ?></td>
+                                    <td><?= htmlspecialchars($comment['detail_komen']) ?></td>
+                                    <td><?= htmlspecialchars($comment['tanggal_komen']) ?></td>
                                 </tr>
                                 <?php endwhile; ?>
                             <?php else: ?>
                                 <tr>
-                                    <td colspan="3" class="text-center">Data admin belum tersedia.</td>
+                                    <td colspan="4" class="text-center">Belum ada komentar terbaru.</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>

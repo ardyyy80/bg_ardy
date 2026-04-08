@@ -210,7 +210,7 @@ $pageTitle = 'Edit Profil';
             <div class="input-note">Nama admin dan username bisa diubah tanpa mengganti password. Jika ingin ganti password, isi password lama dan password baru.</div>
 
             <div class="f-footer">
-                <a href="admin_tampil.php" class="btn-back">Kembali</a>
+                <a href="dashboard.php" class="btn-back">Kembali</a>
                 <button type="submit" class="btn-save">Simpan Perubahan</button>
             </div>
         </form>
