@@ -2,18 +2,32 @@
     <div class="container">
         <h2 class="section-title">Merchandise</h2>
         <div class="merch-grid">
-            <?php while ($merchandise = mysqli_fetch_assoc($merchandiseList)): 
+            <?php
+            $merchImageOverrides = [
+                'dadu' => 'dadu new.jpg',
+                'token nyawa' => 'token nyawa new.jpeg',
+                'topi' => 'topi new.jpeg',
+                'tumbler' => 'Tumblernew.jpeg',
+                'card hantu' => 'Card Hantu new.png',
+                'card manusia' => 'Card Manusia new.png',
+                'papan permainan tapak arwah nusantara' => 'Papan Permainan Tapak Arwah Nusantara new.png',
+            ];
+            ?>
+            <?php while ($merchandise = mysqli_fetch_assoc($merchandiseList)):
                 $hasPhoto = $merchandiseService->hasPhoto($merchandise);
                 $hasDescription = $merchandiseService->hasDescription($merchandise);
                 $whatsappLink = generateWhatsAppLink($merchandise['judul_merch'], $merchandise['harga_merch']);
+                $merchTitle = trim(strtolower($merchandise['judul_merch']));
+                $overrideImage = $merchImageOverrides[$merchTitle] ?? null;
+                $imageSrc = $overrideImage ? 'assets/' . rawurlencode($overrideImage) : ($hasPhoto ? '../backend/uploads/' . rawurlencode($merchandise['foto_merch']) : null);
             ?>
             <div class="merch-card">
                 <div class="merch-header">
                     <h3 class="merch-title"><?= sanitizeOutput($merchandise['judul_merch']) ?></h3>
                 </div>
                 <div class="merch-image-wrapper">
-                    <?php if ($hasPhoto): ?>
-                        <img src="../backend/uploads/<?= sanitizeOutput($merchandise['foto_merch']) ?>" alt="<?= sanitizeOutput($merchandise['judul_merch']) ?>" class="merch-image">
+                    <?php if ($imageSrc): ?>
+                        <img src="<?= sanitizeOutput($imageSrc) ?>" alt="<?= sanitizeOutput($merchandise['judul_merch']) ?>" class="merch-image">
                     <?php else: ?>
                         <div class="merch-no-image">No Image</div>
                     <?php endif; ?>

@@ -40,15 +40,12 @@ $hasActivities = mysqli_num_rows($activityList) > 0;
     </div>
 
     <div class="col-md-4 mb-3">
-        <a href="merch_tampil.php" class="text-decoration-none d-block h-100">
-            <div class="card shadow-sm h-100">
-                <div class="card-body text-center">
-                    <h6>Merch</h6>
-                    <h3><?= $totalMerchandise ?></h3>
-                    <small>Lihat data merchandise</small>
-                </div>
+        <div class="card shadow-sm h-100">
+            <div class="card-body text-center">
+                <h6>Merch</h6>
+                <h3><?= $totalMerchandise ?></h3>
             </div>
-        </a>
+        </div>
     </div>
 
     <div class="col-md-4 mb-3">

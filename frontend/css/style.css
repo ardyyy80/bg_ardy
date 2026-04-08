@@ -17,6 +17,7 @@ body {
     color: #333;
     overflow-x: hidden;
     max-width: 100%;
+    padding-top: 70px;
 }
 
 html {
@@ -121,8 +122,10 @@ html {
 .navbar {
     background: linear-gradient(135deg, #3A0606 0%, #5A0808 100%);
     padding: 15px 0;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     backdrop-filter: blur(10px);
