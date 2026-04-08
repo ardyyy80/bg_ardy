@@ -38,7 +38,7 @@ if (!isset($commentNotificationCount)) {
         </a>
 
         <a href="admin_tampil.php" class="<?= ($active == 'admin') ? 'active' : '' ?>">
-            <i class="fas fa-user-shield menu-icon"></i> Setting Admin
+            <i class="fas fa-user-shield menu-icon"></i> Setting Profil
         </a>
 
         <div class="mt-auto">

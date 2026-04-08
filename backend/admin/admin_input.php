@@ -2,44 +2,41 @@
 include 'cek_login.php';
 
 $active = 'admin';
-$page_title = 'Setting Admin';
+$page_title = 'Edit Profil';
 
 include 'layout/header.php';
 include 'layout/sidebar.php';
 include '../config/koneksi.php';
 
-$currentUserName = trim($_GET['user_name'] ?? '');
+$currentUserName = $_SESSION['user_name'] ?? '';
+$requestedUserName = trim($_GET['user_name'] ?? $currentUserName);
 $adminData = null;
-$oldInput = $_SESSION['old_admin_input'] ?? [];
-$isEditMode = $currentUserName !== '';
+$isEditMode = true;
 
-if ($isEditMode) {
-    $query = "SELECT user_name, nama_admin FROM tb_admin WHERE user_name = ?";
-    $statement = mysqli_prepare($koneksi, $query);
-
-    if ($statement) {
-        mysqli_stmt_bind_param($statement, "s", $currentUserName);
-        mysqli_stmt_execute($statement);
-        $result = mysqli_stmt_get_result($statement);
-        $adminData = mysqli_fetch_assoc($result);
-        mysqli_stmt_close($statement);
-
-        if (!$adminData) {
-            $isEditMode = false;
-            $currentUserName = '';
-        }
-    }
+if ($requestedUserName !== $currentUserName) {
+    $_SESSION['error_message'] = 'Anda hanya dapat mengedit profil admin yang sedang login.';
+    header("Location: admin_tampil.php");
+    exit;
 }
 
-$pageTitle = $isEditMode ? 'Edit Admin' : 'Tambah Admin';
+$query = "SELECT user_name, nama_admin FROM tb_admin WHERE user_name = ?";
+$statement = mysqli_prepare($koneksi, $query);
 
-if (!$isEditMode && !empty($oldInput)) {
-    $adminData = [
-        'nama_admin' => $oldInput['nama_admin'] ?? '',
-        'user_name' => $oldInput['user_name'] ?? '',
-    ];
-    unset($_SESSION['old_admin_input']);
+if ($statement) {
+    mysqli_stmt_bind_param($statement, "s", $currentUserName);
+    mysqli_stmt_execute($statement);
+    $result = mysqli_stmt_get_result($statement);
+    $adminData = mysqli_fetch_assoc($result);
+    mysqli_stmt_close($statement);
 }
+
+if (!$adminData) {
+    $_SESSION['error_message'] = 'Data profil admin tidak ditemukan.';
+    header("Location: admin_tampil.php");
+    exit;
+}
+
+$pageTitle = 'Edit Profil';
 ?>
 
 <style>
@@ -186,67 +183,35 @@ if (!$isEditMode && !empty($oldInput)) {
                 </div>
             </div>
 
-            <?php if ($isEditMode): ?>
-                <div class="f-row">
-                    <div class="f-group">
-                        <label for="old_password">Password Lama</label>
-                        <input
-                            type="password"
-                            name="old_password"
-                            id="old_password"
-                            class="form-control"
-                            placeholder="Isi jika ingin ganti password"
-                        >
-                    </div>
-
-                    <div class="f-group">
-                        <label for="new_password">Password Baru</label>
-                        <input
-                            type="password"
-                            name="new_password"
-                            id="new_password"
-                            class="form-control"
-                            placeholder="Isi jika ingin ganti password"
-                        >
-                    </div>
+            <div class="f-row">
+                <div class="f-group">
+                    <label for="old_password">Password Lama</label>
+                    <input
+                        type="password"
+                        name="old_password"
+                        id="old_password"
+                        class="form-control"
+                        placeholder="Isi jika ingin ganti password"
+                    >
                 </div>
 
-                <div class="input-note">Nama admin dan username bisa diubah tanpa mengganti password. Jika ingin ganti password, isi password lama dan password baru.</div>
-            <?php else: ?>
-                <div class="f-row">
-                    <div class="f-group">
-                        <label for="password">Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            id="password"
-                            class="form-control"
-                            placeholder="Masukkan password admin"
-                            required
-                        >
-                    </div>
-
-                    <div class="f-group">
-                        <label for="confirm_password">Konfirmasi Password</label>
-                        <input
-                            type="password"
-                            name="confirm_password"
-                            id="confirm_password"
-                            class="form-control"
-                            placeholder="Ulangi password admin"
-                            required
-                        >
-                    </div>
+                <div class="f-group">
+                    <label for="new_password">Password Baru</label>
+                    <input
+                        type="password"
+                        name="new_password"
+                        id="new_password"
+                        class="form-control"
+                        placeholder="Isi jika ingin ganti password"
+                    >
                 </div>
+            </div>
 
-                <div class="input-note">Password dan konfirmasi password harus sama.</div>
-            <?php endif; ?>
+            <div class="input-note">Nama admin dan username bisa diubah tanpa mengganti password. Jika ingin ganti password, isi password lama dan password baru.</div>
 
             <div class="f-footer">
                 <a href="admin_tampil.php" class="btn-back">Kembali</a>
-                <button type="submit" class="btn-save">
-                    <?= $isEditMode ? 'Simpan Perubahan' : 'Tambah' ?>
-                </button>
+                <button type="submit" class="btn-save">Simpan Perubahan</button>
             </div>
         </form>
     </div>
