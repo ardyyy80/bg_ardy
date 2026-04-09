@@ -8,10 +8,6 @@ include 'layout/header.php';
 include 'layout/sidebar.php';
 include '../config/koneksi.php';
 
-$adminQuery = "SELECT COUNT(*) as total FROM tb_admin";
-$adminResult = mysqli_query($koneksi, $adminQuery);
-$totalAdmin = mysqli_fetch_assoc($adminResult)['total'];
-
 $merchandiseQuery = "SELECT COUNT(*) as total FROM tb_merch";
 $merchandiseResult = mysqli_query($koneksi, $merchandiseQuery);
 $totalMerchandise = mysqli_fetch_assoc($merchandiseResult)['total'];
@@ -30,16 +26,7 @@ $hasActivities = mysqli_num_rows($activityList) > 0;
 ?>
 
 <div class="row">
-    <div class="col-md-4 mb-3">
-        <div class="card shadow-sm h-100">
-            <div class="card-body text-center">
-                <h6>Admin</h6>
-                <h3><?= $totalAdmin ?></h3>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-4 mb-3">
+    <div class="col-md-6 mb-3">
         <div class="card shadow-sm h-100">
             <div class="card-body text-center">
                 <h6>Merch</h6>
@@ -48,7 +35,7 @@ $hasActivities = mysqli_num_rows($activityList) > 0;
         </div>
     </div>
 
-    <div class="col-md-4 mb-3">
+    <div class="col-md-6 mb-3">
         <div class="card shadow-sm h-100">
             <div class="card-body text-center">
                 <h6>Komentar</h6>
@@ -63,8 +50,8 @@ $hasActivities = mysqli_num_rows($activityList) > 0;
         <div class="card shadow-sm h-100 admin-dashboard-panel">
             <div class="card-header admin-panel-header">
                 <div>
-                    <h5 class="mb-0">Komentar Terbaru</h5>
-                    <small class="admin-panel-subtitle">Pantau komentar terbaru yang masuk dari pengunjung.</small>
+                    <h5 class="mb-0">Komentar</h5>
+                    <small class="admin-panel-subtitle">Pantau komentar yang masuk dari pengunjung.</small>
                 </div>
                 <a href="komen_tampil.php" class="btn btn-primary btn-sm admin-panel-action">Lihat Semua Komentar</a>
             </div>
@@ -94,7 +81,7 @@ $hasActivities = mysqli_num_rows($activityList) > 0;
                                 <?php endwhile; ?>
                             <?php else: ?>
                                 <tr>
-                                    <td colspan="4" class="text-center">Belum ada komentar terbaru.</td>
+                                    <td colspan="4" class="text-center">Belum ada komentar.</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>
