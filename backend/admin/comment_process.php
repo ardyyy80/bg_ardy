@@ -21,6 +21,7 @@ if ($isDeleteRequest) {
         $_SESSION['error_message'] = 'Gagal menghapus komentar!';
     }
     
-    header("Location: komen_tampil.php");
+    header("Location: comment_list.php");
     exit;
 }
+

@@ -13,7 +13,7 @@ $merchandiseList = mysqli_query($koneksi, $query);
 ?>
 
 <div class="d-flex justify-content-end mb-3">
-    <a href="merch_input.php" class="btn btn-success">+ Tambah Merchandise</a>
+    <a href="merchandise_form.php" class="btn btn-success">+ Tambah Merchandise</a>
 </div>
 
 <div class="card shadow-sm">
@@ -46,9 +46,9 @@ $merchandiseList = mysqli_query($koneksi, $query);
                     <td>Rp <?= number_format($merchandise['harga_merch'], 0, ',', '.') ?></td>
                     <td><?= number_format($merchandise['stock_merch'], 0, ',', '.') ?></td>
                     <td>
-                        <a href="merch_input.php?id=<?= $merchandise['id_merch'] ?>" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="merchandise_form.php?id=<?= $merchandise['id_merch'] ?>" class="btn btn-warning btn-sm">Edit</a>
                         <button 
-                            onclick="confirmDelete('merch_proses.php?hapus=<?= $merchandise['id_merch'] ?>', 'merchandise <?= htmlspecialchars($merchandise['judul_merch']) ?>')" 
+                            onclick="confirmDelete('merchandise_process.php?hapus=<?= $merchandise['id_merch'] ?>', 'merchandise <?= htmlspecialchars($merchandise['judul_merch']) ?>')" 
                             class="btn btn-danger btn-sm">
                             Hapus
                         </button>
@@ -73,3 +73,4 @@ $merchandiseList = mysqli_query($koneksi, $query);
 </script>
 
 <?php include 'layout/footer.php'; ?>
+

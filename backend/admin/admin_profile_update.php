@@ -6,7 +6,7 @@ include '../config/helpers.php';
 
 if (isset($_GET['hapus'])) {
     $_SESSION['error_message'] = 'Fitur hapus admin tidak tersedia pada setting profil.';
-    header("Location: admin_tampil.php");
+    header("Location: admin_profile_view.php");
     exit;
 }
 
@@ -20,7 +20,7 @@ $confirmPassword = $_POST['confirm_password'] ?? '';
 
 if ($namaAdmin === '' || $userName === '') {
     $_SESSION['error_message'] = 'Nama admin dan username wajib diisi!';
-    header("Location: admin_tampil.php");
+    header("Location: admin_profile_view.php");
     exit;
 }
 
@@ -28,7 +28,7 @@ $isUpdate = $oldUserName !== '';
 
 if (!$isUpdate) {
     $_SESSION['error_message'] = 'Fitur tambah admin tidak tersedia pada setting profil.';
-    header("Location: admin_tampil.php");
+    header("Location: admin_profile_view.php");
     exit;
 }
 
@@ -46,13 +46,13 @@ if ($isUpdate) {
 
     if (!$currentAdmin) {
         $_SESSION['error_message'] = 'Data admin yang akan diupdate tidak ditemukan!';
-        header("Location: admin_tampil.php");
+        header("Location: admin_profile_view.php");
         exit;
     }
 
     if (($currentAdmin['user_name'] ?? '') !== ($_SESSION['user_name'] ?? '')) {
         $_SESSION['error_message'] = 'Anda hanya dapat mengubah profil admin yang sedang login.';
-        header("Location: admin_tampil.php");
+        header("Location: admin_profile_view.php");
         exit;
     }
 
@@ -63,13 +63,13 @@ if ($isUpdate) {
     if ($shouldUpdatePassword) {
         if (!$hasOldPassword || !$hasNewPassword) {
             $_SESSION['error_message'] = 'Password lama dan password baru wajib diisi jika ingin mengganti password!';
-            header("Location: admin_input.php?user_name=" . urlencode($oldUserName));
+            header("Location: admin_profile.php?user_name=" . urlencode($oldUserName));
             exit;
         }
 
         if (md5($oldPassword) !== ($currentAdmin['password'] ?? '')) {
             $_SESSION['error_message'] = 'Password lama tidak cocok!';
-            header("Location: admin_input.php?user_name=" . urlencode($oldUserName));
+            header("Location: admin_profile.php?user_name=" . urlencode($oldUserName));
             exit;
         }
     }
@@ -85,7 +85,7 @@ mysqli_stmt_close($checkStatement);
 
 if ($duplicateAdmin && $duplicateAdmin['user_name'] !== $oldUserName) {
     $_SESSION['error_message'] = 'Username admin sudah digunakan, silakan gunakan username lain!';
-    header("Location: admin_input.php?user_name=" . urlencode($oldUserName));
+    header("Location: admin_profile.php?user_name=" . urlencode($oldUserName));
     exit;
 }
 
@@ -119,5 +119,6 @@ if ($isUpdate) {
     }
 }
 
-header("Location: admin_tampil.php");
+header("Location: admin_profile_view.php");
 exit;
+

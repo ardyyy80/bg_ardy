@@ -155,7 +155,7 @@ $pageTitle = $isEditMode ? 'Edit Merchandise' : 'Tambah Merchandise';
     <div class="f-head"><?= $pageTitle ?></div>
 
     <div class="f-body">
-        <form action="merch_proses.php" method="post" enctype="multipart/form-data">
+        <form action="merchandise_process.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id_merch" value="<?= htmlspecialchars($merchandiseData['id_merch'] ?? '') ?>">
             <input type="hidden" name="foto_lama" value="<?= htmlspecialchars($merchandiseData['foto_merch'] ?? '') ?>">
 
@@ -196,7 +196,7 @@ $pageTitle = $isEditMode ? 'Edit Merchandise' : 'Tambah Merchandise';
             </div>
 
             <div class="f-footer">
-                <a href="merch_tampil.php" class="btn-back">Kembali</a>
+                <a href="merchandise_list.php" class="btn-back">Kembali</a>
                 <button type="submit" class="btn-save">
                     <?= $isEditMode ? 'Simpan Perubahan' : 'Tambah' ?>
                 </button>
@@ -206,3 +206,4 @@ $pageTitle = $isEditMode ? 'Edit Merchandise' : 'Tambah Merchandise';
 </div>
 
 <?php include 'layout/footer.php'; ?>
+

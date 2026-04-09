@@ -53,7 +53,7 @@ $hasActivities = mysqli_num_rows($activityList) > 0;
                     <h5 class="mb-0">Komentar</h5>
                     <small class="admin-panel-subtitle">Pantau komentar yang masuk dari pengunjung.</small>
                 </div>
-                <a href="komen_tampil.php" class="btn btn-primary btn-sm admin-panel-action">Lihat Semua Komentar</a>
+                <a href="comment_list.php" class="btn btn-primary btn-sm admin-panel-action">Lihat Semua Komentar</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive admin-table-wrapper">
@@ -142,3 +142,4 @@ $hasActivities = mysqli_num_rows($activityList) > 0;
 <?php
 include 'layout/footer.php';
 ?>
+

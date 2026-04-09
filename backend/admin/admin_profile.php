@@ -15,7 +15,7 @@ $isEditMode = true;
 
 if ($requestedUserName !== $currentUserName) {
     $_SESSION['error_message'] = 'Anda hanya dapat mengedit profil admin yang sedang login.';
-    header("Location: admin_tampil.php");
+    header("Location: admin_profile_view.php");
     exit;
 }
 
@@ -32,7 +32,7 @@ if ($statement) {
 
 if (!$adminData) {
     $_SESSION['error_message'] = 'Data profil admin tidak ditemukan.';
-    header("Location: admin_tampil.php");
+    header("Location: admin_profile_view.php");
     exit;
 }
 
@@ -154,7 +154,7 @@ $pageTitle = 'Edit Profil';
     <div class="f-head"><?= htmlspecialchars($pageTitle) ?></div>
 
     <div class="f-body">
-        <form action="admin_proses.php" method="post">
+        <form action="admin_profile_update.php" method="post">
             <input type="hidden" name="old_user_name" value="<?= htmlspecialchars($adminData['user_name'] ?? '') ?>">
 
             <div class="f-row">
@@ -225,3 +225,4 @@ $pageTitle = 'Edit Profil';
 </script>
 
 <?php include 'layout/footer.php'; ?>
+

@@ -19,11 +19,11 @@ if (!isset($commentNotificationCount)) {
             <i class="fas fa-chart-line menu-icon"></i> Dashboard
         </a>
 
-        <a href="merch_tampil.php" class="<?= ($active == 'merch') ? 'active' : '' ?>">
+        <a href="merchandise_list.php" class="<?= ($active == 'merch') ? 'active' : '' ?>">
             <i class="fas fa-shopping-bag menu-icon"></i> Merchandise
         </a>
 
-        <a href="komen_tampil.php" class="<?= ($active == 'komen') ? 'active' : '' ?>">
+        <a href="comment_list.php" class="<?= ($active == 'komen') ? 'active' : '' ?>">
             <span class="menu-label-with-badge">
                 <span><i class="fas fa-comments menu-icon"></i> Komentar</span>
                 <?php if ($commentNotificationCount > 0): ?>
@@ -56,7 +56,7 @@ if (!isset($commentNotificationCount)) {
                     </summary>
 
                     <div class="header-dropdown-list">
-                        <a href="admin_tampil.php" class="header-dropdown-item <?= ($active == 'admin') ? 'active' : '' ?>">
+                        <a href="admin_profile_view.php" class="header-dropdown-item <?= ($active == 'admin') ? 'active' : '' ?>">
                             <i class="fas fa-user-shield"></i>
                             <span>Setting Profil</span>
                         </a>
@@ -71,3 +71,4 @@ if (!isset($commentNotificationCount)) {
         </div>
 
         <div class="content p-4">
+

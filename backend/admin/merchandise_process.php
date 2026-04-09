@@ -38,7 +38,7 @@ if ($isDeleteRequest) {
         $_SESSION['error_message'] = 'Merchandise tidak ditemukan!';
     }
     
-    header("Location: merch_tampil.php");
+    header("Location: merchandise_list.php");
     exit;
 }
 
@@ -81,4 +81,5 @@ if ($isUpdate) {
     }
 }
 
-header("Location: merch_tampil.php");
+header("Location: merchandise_list.php");
+

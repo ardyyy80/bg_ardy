@@ -49,7 +49,7 @@ $commentList = mysqli_query($koneksi, $query);
                         <td><?= htmlspecialchars($comment['tanggal_komen']) ?></td>
                         <td>
                             <button 
-                                onclick="confirmDelete('komen_proses.php?hapus=<?= $comment['id_komen'] ?>', 'komentar ini')" 
+                                onclick="confirmDelete('comment_process.php?hapus=<?= $comment['id_komen'] ?>', 'komentar ini')" 
                                 class="btn btn-danger btn-sm">
                                 Hapus
                             </button>
@@ -79,3 +79,4 @@ $commentList = mysqli_query($koneksi, $query);
 </script>
 
 <?php include 'layout/footer.php'; ?>
+
