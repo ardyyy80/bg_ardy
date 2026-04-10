@@ -1,5 +1,5 @@
 <?php
-$text = require_once 'game_text.php';
+$text = require_once 'data/game_text.php';
 
 if (!is_array($text)) {
     die('Error loading game content');
@@ -24,17 +24,17 @@ $activeSection = 'game';
         <div class="container">
             <h1 class="page-title"><?= $text['page_title'] ?></h1>
             
-            <?php include 'components/detail/board_preview.php'; ?>
+            <?php include 'components/game-detail/board_preview.php'; ?>
             
             <div class="game-detail-content">
-                <?php include 'components/detail/komponen.php'; ?>
-                <?php include 'components/detail/persiapan.php'; ?>
-                <?php include 'components/detail/menentukan_giliran.php'; ?>
-                <?php include 'components/detail/giliran.php'; ?>
-                <?php include 'components/detail/petak.php'; ?>
-                <?php include 'components/detail/serangan.php'; ?>
-                <?php include 'components/detail/kondisi.php'; ?>
-                <?php include 'components/detail/akhir.php'; ?>
+                <?php include 'components/game-detail/komponen.php'; ?>
+                <?php include 'components/game-detail/persiapan.php'; ?>
+                <?php include 'components/game-detail/menentukan_giliran.php'; ?>
+                <?php include 'components/game-detail/giliran.php'; ?>
+                <?php include 'components/game-detail/petak.php'; ?>
+                <?php include 'components/game-detail/serangan.php'; ?>
+                <?php include 'components/game-detail/kondisi.php'; ?>
+                <?php include 'components/game-detail/akhir.php'; ?>
 
                 <div class="back-button-container">
                     <a href="index.php#game" class="btn btn-primary btn-back">

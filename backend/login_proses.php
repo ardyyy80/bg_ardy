@@ -6,7 +6,7 @@ require_once 'config/helpers.php';
 require_once 'config/log_activity.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    redirectTo('../frontend/login.php');
+    redirectTo('login.php');
 }
 
 $username = trim($_POST['username'] ?? '');
@@ -14,7 +14,7 @@ $password = $_POST['password'] ?? '';
 
 if (empty($username) || empty($password)) {
     setFlashMessage('error', ERROR_MESSAGES['empty']);
-    redirectTo('../frontend/login.php');
+    redirectTo('login.php');
 }
 
 $query = "SELECT * FROM tb_admin WHERE user_name = ?";
@@ -40,4 +40,4 @@ if (mysqli_num_rows($result) === 1) {
 
 mysqli_stmt_close($statement);
 setFlashMessage('error', ERROR_MESSAGES['invalid']);
-redirectTo('../frontend/login.php');
+redirectTo('login.php');

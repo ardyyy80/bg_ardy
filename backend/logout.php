@@ -10,4 +10,4 @@ session_destroy();
 session_start();
 
 setFlashMessage('success', 'Anda telah logout!');
-redirectTo('../frontend/login.php');
+redirectTo('login.php');

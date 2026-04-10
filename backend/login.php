@@ -1,10 +1,10 @@
 <?php
 session_start();
-require_once '../backend/config/constants.php';
-require_once '../backend/config/helpers.php';
+require_once 'config/constants.php';
+require_once 'config/helpers.php';
 
 if (isset($_SESSION['login'])) {
-    redirectTo('../backend/admin/dashboard.php');
+    redirectTo('admin/dashboard.php');
 }
 
 $errorMessage = getFlashMessage('error');
@@ -16,8 +16,8 @@ $successMessage = getFlashMessage('success');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin | Tapak Arwah Nusantara</title>
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link rel="stylesheet" href="../backend/admin/assets/css/login.css">
+    <link rel="icon" type="image/png" href="../frontend/assets/favicon.png">
+    <link rel="stylesheet" href="admin/assets/css/login.css">
 </head>
 <body>
     <div class="login-container">
@@ -35,7 +35,7 @@ $successMessage = getFlashMessage('success');
             </div>
         <?php endif; ?>
 
-        <form action="../backend/login_proses.php" method="POST">
+        <form action="login_proses.php" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
