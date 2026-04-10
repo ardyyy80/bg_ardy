@@ -2,25 +2,11 @@
     <div class="container">
         <h2 class="section-title">Merchandise</h2>
         <div class="merch-grid">
-            <?php
-            $merchImageOverrides = [
-                'dadu' => 'dadu new.jpg',
-                'token nyawa' => 'token nyawa new.jpeg',
-                'topi' => 'merchtnew.jpeg',
-                'tumbler' => 'Tumblernew.jpeg',
-                'sticker' => 'stickermerch.jpeg',
-                'card hantu' => 'Card Hantu new.png',
-                'card manusia' => 'Card Manusia new.png',
-                'papan permainan tapak arwah nusantara' => 'Papan Permainan Tapak Arwah Nusantara new.png',
-            ];
-            ?>
             <?php while ($merchandise = mysqli_fetch_assoc($merchandiseList)):
                 $hasPhoto = $merchandiseService->hasPhoto($merchandise);
                 $hasDescription = $merchandiseService->hasDescription($merchandise);
                 $whatsappLink = generateWhatsAppLink($merchandise['judul_merch'], $merchandise['harga_merch']);
-                $merchTitle = trim(strtolower($merchandise['judul_merch']));
-                $overrideImage = $merchImageOverrides[$merchTitle] ?? null;
-                $imageSrc = $overrideImage ? 'assets/' . rawurlencode($overrideImage) : ($hasPhoto ? '../backend/uploads/' . rawurlencode($merchandise['foto_merch']) : null);
+                $imageSrc = $hasPhoto ? '../backend/uploads/' . rawurlencode($merchandise['foto_merch']) : null;
             ?>
             <div class="merch-card">
                 <div class="merch-header">
