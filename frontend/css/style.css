@@ -957,6 +957,22 @@ html {
     margin: 0 auto;
 }
 
+.comment-alert {
+    margin-bottom: 1rem;
+    padding: 1.2rem 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #8B4545;
+}
+
+.comment-alert--danger {
+    background: rgba(139, 69, 69, 0.15);
+    color: #6A3535;
+}
+
+.success-modal--open {
+    display: flex;
+}
+
 .comment-form {
     background: linear-gradient(135deg, #3A0606 0%, #4A0707 100%);
     padding: 50px;

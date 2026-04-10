@@ -26,7 +26,7 @@ $commentList = mysqli_query($koneksi, $query);
 
 <div class="card shadow-sm">
     <div class="card-body">
-        <div class="table-responsive" style="max-height: 600px; overflow-y: auto;">
+        <div class="table-responsive table-responsive--tall">
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -79,4 +79,3 @@ $commentList = mysqli_query($koneksi, $query);
 </script>
 
 <?php include 'layout/footer.php'; ?>
-

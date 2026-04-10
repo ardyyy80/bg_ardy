@@ -3,12 +3,12 @@
         <h2 class="section-title">Comment</h2>
         <div class="comment-wrapper">
             <?php if ($commentError): ?>
-                <div class="alert alert-danger" style="margin-bottom: 1rem; padding: 1.2rem 1.5rem; background: rgba(139, 69, 69, 0.15); color: #6A3535; border-radius: 12px; border: 2px solid #8B4545;">
+                <div class="alert alert-danger comment-alert comment-alert--danger">
                     <?= sanitizeOutput($commentError) ?>
                 </div>
             <?php endif; ?>
             
-            <div id="successModal" class="success-modal" <?= $commentSuccess ? 'style="display: flex;"' : '' ?>>
+            <div id="successModal" class="success-modal<?= $commentSuccess ? ' success-modal--open' : '' ?>">
                 <div class="success-modal-content">
                     <div class="success-checkmark">
                         <svg viewBox="0 0 52 52">

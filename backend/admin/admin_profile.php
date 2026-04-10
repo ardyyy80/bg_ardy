@@ -39,126 +39,15 @@ if (!$adminData) {
 $pageTitle = 'Edit Profil';
 ?>
 
-<style>
-    .f-wrap {
-        max-width: 1250px;
-        background: #fff;
-        border: 1px solid #e2d9f3;
-        border-radius: 10px;
-        overflow: hidden;
-    }
+<div class="admin-form-shell">
+    <div class="admin-form-shell__head"><?= htmlspecialchars($pageTitle) ?></div>
 
-    .f-head {
-        padding: 14px 20px;
-        background: #ede8fa;
-        border-bottom: 1px solid #e2d9f3;
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: #2d3748;
-    }
-
-    .f-body {
-        padding: 24px 20px;
-    }
-
-    .f-body label {
-        display: block;
-        font-size: 0.82rem;
-        font-weight: 600;
-        color: #4a5568;
-        margin-bottom: 5px;
-    }
-
-    .f-body .form-control {
-        width: 100%;
-        padding: 9px 12px;
-        font-size: 0.88rem;
-        border: 1px solid #d8cff0;
-        border-radius: 7px;
-        background: #fafafa;
-        color: #2d3748;
-        font-family: 'Poppins', sans-serif;
-        outline: none;
-        transition: border-color 0.15s;
-    }
-
-    .f-body .form-control:focus {
-        border-color: #7c5ec9;
-        background: #fff;
-        box-shadow: 0 0 0 3px rgba(124, 94, 201, 0.1);
-    }
-
-    .f-row {
-        display: flex;
-        gap: 14px;
-    }
-
-    .f-row > div {
-        flex: 1;
-    }
-
-    .f-group {
-        margin-bottom: 16px;
-    }
-
-    .f-footer {
-        display: flex;
-        gap: 8px;
-        justify-content: flex-end;
-        padding-top: 8px;
-        border-top: 1px solid #f0ebfa;
-        margin-top: 4px;
-    }
-
-    .btn-save {
-        padding: 9px 20px;
-        background: #7c5ec9;
-        color: #fff !important;
-        border: none;
-        border-radius: 7px;
-        font-size: 0.87rem;
-        font-weight: 600;
-        cursor: pointer;
-        font-family: 'Poppins', sans-serif;
-        transition: background 0.2s;
-    }
-
-    .btn-save:hover {
-        background: #6b4eb8;
-    }
-
-    .btn-back {
-        padding: 9px 18px;
-        background: #fff;
-        color: #718096 !important;
-        border: 1px solid #d1d5db;
-        border-radius: 7px;
-        font-size: 0.87rem;
-        text-decoration: none;
-        font-family: 'Poppins', sans-serif;
-        transition: background 0.2s;
-    }
-
-    .btn-back:hover {
-        background: #f7f7f7;
-    }
-
-    .input-note {
-        margin-top: 6px;
-        font-size: 0.78rem;
-        color: #718096;
-    }
-</style>
-
-<div class="f-wrap">
-    <div class="f-head"><?= htmlspecialchars($pageTitle) ?></div>
-
-    <div class="f-body">
+    <div class="admin-form-shell__body">
         <form action="admin_profile_update.php" method="post">
             <input type="hidden" name="old_user_name" value="<?= htmlspecialchars($adminData['user_name'] ?? '') ?>">
 
-            <div class="f-row">
-                <div class="f-group">
+            <div class="admin-form-shell__row">
+                <div class="admin-form-shell__group">
                     <label for="nama_admin">Nama Admin</label>
                     <input
                         type="text"
@@ -170,7 +59,7 @@ $pageTitle = 'Edit Profil';
                     >
                 </div>
 
-                <div class="f-group">
+                <div class="admin-form-shell__group">
                     <label for="user_name">Username</label>
                     <input
                         type="text"
@@ -183,8 +72,8 @@ $pageTitle = 'Edit Profil';
                 </div>
             </div>
 
-            <div class="f-row">
-                <div class="f-group">
+            <div class="admin-form-shell__row">
+                <div class="admin-form-shell__group">
                     <label for="old_password">Password Lama</label>
                     <input
                         type="password"
@@ -195,7 +84,7 @@ $pageTitle = 'Edit Profil';
                     >
                 </div>
 
-                <div class="f-group">
+                <div class="admin-form-shell__group">
                     <label for="new_password">Password Baru</label>
                     <input
                         type="password"
@@ -207,11 +96,11 @@ $pageTitle = 'Edit Profil';
                 </div>
             </div>
 
-            <div class="input-note">Nama admin dan username bisa diubah tanpa mengganti password. Jika ingin ganti password, isi password lama dan password baru.</div>
+            <div class="admin-form-shell__note">Nama admin dan username bisa diubah tanpa mengganti password. Jika ingin ganti password, isi password lama dan password baru.</div>
 
-            <div class="f-footer">
-                <a href="dashboard.php" class="btn-back">Kembali</a>
-                <button type="submit" class="btn-save">Simpan Perubahan</button>
+            <div class="admin-form-shell__footer">
+                <a href="dashboard.php" class="admin-btn-back">Kembali</a>
+                <button type="submit" class="admin-btn-save">Simpan Perubahan</button>
             </div>
         </form>
     </div>
@@ -225,4 +114,3 @@ $pageTitle = 'Edit Profil';
 </script>
 
 <?php include 'layout/footer.php'; ?>
-
